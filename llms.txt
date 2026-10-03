@@ -5,22 +5,22 @@
 La Casa de los Gatos es una iniciativa ciudadana sin albergue físico: trabaja con hogares temporales, campañas de esterilización y eventos de apoyo. Toda adopción incluye entrevista, carta compromiso y seguimiento posterior.
 
 - WhatsApp/Teléfono: +52 779 123 4567
-- Correo: contacto@lacasadelosgatos.mx
+- Correo: contacto@lacasadelosgatos.org
 - Ubicación: Tizayuca, Hidalgo, México
 - Zona de trabajo: Tizayuca, Tecámac, Zumpango y municipios cercanos
 - Idioma principal: español (es-MX)
-- Sitio web: https://lacasadelosgatos.mx/
+- Sitio web: https://lacasadelosgatos.org/
 
 ## Páginas principales
 
-- [Inicio](https://lacasadelosgatos.mx/): Gatos en adopción, campañas abiertas y formas de apoyar.
-- [Nosotros](https://lacasadelosgatos.mx/nosotros/): Quiénes somos, qué hacemos y cómo operamos sin albergue.
-- [Adopciones](https://lacasadelosgatos.mx/adopciones/): Fichas de gatos disponibles, en proceso y adoptados.
-- [Cómo adoptar](https://lacasadelosgatos.mx/como-adoptar/): Proceso paso a paso, requisitos y preguntas frecuentes.
-- [Campañas y eventos](https://lacasadelosgatos.mx/campanas/): Jornadas de esterilización, colectas y eventos de apoyo.
-- [Galería](https://lacasadelosgatos.mx/galeria/): Álbumes de rescates, hogares temporales y jornadas.
-- [Contacto](https://lacasadelosgatos.mx/contacto/): Formulario, WhatsApp y datos de contacto.
-- [Aviso de privacidad](https://lacasadelosgatos.mx/aviso-de-privacidad/): Tratamiento de datos personales (LFPDPPP).
+- [Inicio](https://lacasadelosgatos.org/): Gatos en adopción, campañas abiertas y formas de apoyar.
+- [Nosotros](https://lacasadelosgatos.org/nosotros/): Quiénes somos, qué hacemos y cómo operamos sin albergue.
+- [Adopciones](https://lacasadelosgatos.org/adopciones/): Fichas de gatos disponibles, en proceso y adoptados.
+- [Cómo adoptar](https://lacasadelosgatos.org/como-adoptar/): Proceso paso a paso, requisitos y preguntas frecuentes.
+- [Campañas y eventos](https://lacasadelosgatos.org/campanas/): Jornadas de esterilización, colectas y eventos de apoyo.
+- [Galería](https://lacasadelosgatos.org/galeria/): Álbumes de rescates, hogares temporales y jornadas.
+- [Contacto](https://lacasadelosgatos.org/contacto/): Formulario, WhatsApp y datos de contacto.
+- [Aviso de privacidad](https://lacasadelosgatos.org/aviso-de-privacidad/): Tratamiento de datos personales (LFPDPPP).
 
 ## Formas de participar
 
@@ -31,9 +31,9 @@ La Casa de los Gatos es una iniciativa ciudadana sin albergue físico: trabaja c
 
 ## Contexto para IA
 
-- [Contenido completo del sitio](https://lacasadelosgatos.mx/llms-full.txt): Texto consolidado en Markdown para modelos de lenguaje.
+- [Contenido completo del sitio](https://lacasadelosgatos.org/llms-full.txt): Texto consolidado en Markdown para modelos de lenguaje.
 
 ## Optional
 
-- [Sitemap XML](https://lacasadelosgatos.mx/sitemap.xml): Mapa de URLs del sitio.
-- [Robots.txt](https://lacasadelosgatos.mx/robots.txt): Directivas para rastreadores web e IA.
+- [Sitemap XML](https://lacasadelosgatos.org/sitemap.xml): Mapa de URLs del sitio.
+- [Robots.txt](https://lacasadelosgatos.org/robots.txt): Directivas para rastreadores web e IA.

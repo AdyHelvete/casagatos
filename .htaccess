@@ -17,24 +17,26 @@ RewriteRule ^backups(/|$) - [F,L]
 
 # Canonical host: solo cuando el sitio ya vive en el dominio del cliente.
 # En preview (tizawebs.com/prospectos/...) estas reglas no deben dispararse.
-RewriteCond %{HTTP_HOST} ^www\.lacasadelosgatos\.mx$ [NC]
-RewriteRule ^ https://lacasadelosgatos.mx%{REQUEST_URI} [L,R=301]
+RewriteCond %{HTTP_HOST} ^www\.lacasadelosgatos\.org$ [NC]
+RewriteRule ^ https://lacasadelosgatos.org%{REQUEST_URI} [L,R=301]
 
 RewriteCond %{HTTPS} !=on
-RewriteCond %{HTTP_HOST} ^(www\.)?lacasadelosgatos\.mx$ [NC]
-RewriteRule ^ https://lacasadelosgatos.mx%{REQUEST_URI} [L,R=301]
+RewriteCond %{HTTP_HOST} ^(www\.)?lacasadelosgatos\.org$ [NC]
+RewriteRule ^ https://lacasadelosgatos.org%{REQUEST_URI} [L,R=301]
 
 # El panel y las APIs son apps PHP: no aplicar reglas de URL limpias.
 RewriteRule ^control(/|$) - [L]
 RewriteRule ^api(/|$) - [L]
 
-# Sustituciones relativas: funcionan en raíz y en /prospectos/<slug>/.
-RewriteCond %{THE_REQUEST} \s/.*/index\.php[\s?] [NC]
-RewriteRule ^index\.php$ ./ [R=301,L]
+# Las redirecciones se arman con %{REQUEST_URI}/%{THE_REQUEST}, nunca con un
+# destino relativo: sin RewriteBase, Apache antepone la ruta física del hosting
+# (p. ej. /home1/usuario/...). Así funcionan igual en raíz y en /prospectos/<slug>/.
+RewriteCond %{THE_REQUEST} \s(\S*/)index\.php[\s?] [NC]
+RewriteRule ^index\.php$ %1 [R=301,L]
 
 # Fichas de contenido administrable: canonical con barra final.
 RewriteCond %{REQUEST_URI} /(adopciones|campanas|galeria)/[a-z0-9-]+$
-RewriteRule ^(.+)$ $1/ [R=301,L]
+RewriteRule ^ %{REQUEST_URI}/ [R=301,L]
 
 RewriteRule ^adopciones/([a-z0-9-]+)/$ adopciones/detalle.php?id=$1 [L,QSA]
 RewriteRule ^campanas/([a-z0-9-]+)/$ campanas/detalle.php?id=$1 [L,QSA]
@@ -42,7 +44,11 @@ RewriteRule ^galeria/([a-z0-9-]+)/$ galeria/album.php?id=$1 [L,QSA]
 
 RewriteCond %{REQUEST_FILENAME} -d
 RewriteCond %{REQUEST_URI} !/$
-RewriteRule ^(.+[^/])$ $1/ [R=301,L]
+RewriteRule ^ %{REQUEST_URI}/ [R=301,L]
 
-# Relativo a este folder (no /404.php de la raíz del hosting).
-ErrorDocument 404 404.php
+# 404 con la plantilla del sitio. ErrorDocument no acepta rutas relativas
+# (con "404.php" Apache imprime ese texto), así que se reescribe internamente;
+# 404.php ya responde con estado 404.
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^ 404.php [L]

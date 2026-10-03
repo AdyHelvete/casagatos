@@ -57,7 +57,7 @@ class SiteStorage
                 'phone' => '+527791234567',
                 'phoneDisplay' => '779 123 4567',
                 'phoneDisplayIntl' => '+52 779 123 4567',
-                'email' => 'contacto@lacasadelosgatos.mx',
+                'email' => 'contacto@lacasadelosgatos.org',
                 'location' => 'Tizayuca, Hidalgo',
             ],
             'whatsapp' => [

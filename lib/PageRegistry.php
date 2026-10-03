@@ -16,7 +16,7 @@ class PageRegistry
     {
         return [
             'settings' => [
-                'siteUrl' => 'https://lacasadelosgatos.mx',
+                'siteUrl' => 'https://lacasadelosgatos.org',
                 'lang' => 'es-MX',
                 'locale' => 'es_MX',
                 'siteName' => 'La Casa de los Gatos',

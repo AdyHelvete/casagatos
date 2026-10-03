@@ -1,6 +1,6 @@
 {
   "settings": {
-    "siteUrl": "https://lacasadelosgatos.mx",
+    "siteUrl": "https://lacasadelosgatos.org",
     "basePath": "auto",
     "lang": "es-MX",
     "locale": "es_MX",
@@ -37,7 +37,7 @@
       "twitterDescription": "",
       "manifest": true,
       "extraHead": "",
-      "jsonLd": "{\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"Organization\",\"@id\":\"https://lacasadelosgatos.mx/#organization\",\"name\":\"La Casa de los Gatos\",\"url\":\"https://lacasadelosgatos.mx/\",\"logo\":\"https://lacasadelosgatos.mx/assets/logo/casa_gatos_logo.jpg\",\"email\":\"contacto@lacasadelosgatos.mx\",\"sameAs\":[\"https://www.facebook.com/mx.lacasadelosgatos\"],\"address\":{\"@type\":\"PostalAddress\",\"addressLocality\":\"Tizayuca\",\"addressRegion\":\"Hidalgo\",\"addressCountry\":\"MX\"},\"areaServed\":[\"Tizayuca\",\"Tecámac\",\"Zumpango\"]},{\"@type\":\"WebSite\",\"@id\":\"https://lacasadelosgatos.mx/#website\",\"url\":\"https://lacasadelosgatos.mx/\",\"name\":\"La Casa de los Gatos\",\"inLanguage\":\"es-MX\",\"publisher\":{\"@id\":\"https://lacasadelosgatos.mx/#organization\"}}]}",
+      "jsonLd": "{\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"Organization\",\"@id\":\"https://lacasadelosgatos.org/#organization\",\"name\":\"La Casa de los Gatos\",\"url\":\"https://lacasadelosgatos.org/\",\"logo\":\"https://lacasadelosgatos.org/assets/logo/casa_gatos_logo.jpg\",\"email\":\"contacto@lacasadelosgatos.org\",\"sameAs\":[\"https://www.facebook.com/mx.lacasadelosgatos\"],\"address\":{\"@type\":\"PostalAddress\",\"addressLocality\":\"Tizayuca\",\"addressRegion\":\"Hidalgo\",\"addressCountry\":\"MX\"},\"areaServed\":[\"Tizayuca\",\"Tecámac\",\"Zumpango\"]},{\"@type\":\"WebSite\",\"@id\":\"https://lacasadelosgatos.org/#website\",\"url\":\"https://lacasadelosgatos.org/\",\"name\":\"La Casa de los Gatos\",\"inLanguage\":\"es-MX\",\"publisher\":{\"@id\":\"https://lacasadelosgatos.org/#organization\"}}]}",
       "bodyClass": "",
       "menu": { "show": true, "label": "Inicio", "order": 10, "style": "link", "target": "" },
       "sitemap": { "include": true, "changefreq": "weekly", "priority": "1.0", "lastmod": "" }

@@ -30,7 +30,7 @@ User-agent: Applebot-Extended
 Allow: /
 
 # Índice curado para modelos de lenguaje (GEO)
-# https://lacasadelosgatos.mx/llms.txt
-# Contenido completo: https://lacasadelosgatos.mx/llms-full.txt
+# https://lacasadelosgatos.org/llms.txt
+# Contenido completo: https://lacasadelosgatos.org/llms-full.txt
 
-Sitemap: https://lacasadelosgatos.mx/sitemap.xml
+Sitemap: https://lacasadelosgatos.org/sitemap.xml

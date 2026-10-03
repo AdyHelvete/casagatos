@@ -4,11 +4,13 @@ Sitio generado con `docs/replicacion/PROMPT_REPLICACION.md` a partir de
 `prospectos/casa_gatos/BRIEF_SITIO.md`. Sin blog y sin base de datos: todo el
 contenido vive en archivos JSON dentro de `data/`.
 
-- Dominio previsto: `https://lacasadelosgatos.mx`
+- Dominio: `https://lacasadelosgatos.org` (definido el 2026-10-02; antes `.mx`)
+- Repositorio propio: https://github.com/AdyHelvete/casagatos (separado de
+  Tizawebs el 2026-10-02)
 - **Modo de publicación:** carpeta de pruebas (luego raíz del dominio)
 - Preview ahora: `https://tizawebs.com/prospectos/casa_gatos/`
 - Panel en preview: `https://tizawebs.com/prospectos/casa_gatos/control/login.php`
-- Panel en dominio propio: `https://lacasadelosgatos.mx/control/`
+- Panel en dominio propio: `https://lacasadelosgatos.org/control/`
 - Usuario inicial: `CasaGatosAdmin` (la contraseña temporal se genera sola, ver abajo)
 
 ---
@@ -47,7 +49,7 @@ dominio; `basePath` en `"auto"` o `""`. No reescribas enlaces. Guía del kit:
 
 ---
 
-## 3. Go-live — raíz de `lacasadelosgatos.mx`
+## 3. Go-live — raíz de `lacasadelosgatos.org`
 
 Ejecutar **solo** cuando el proyecto esté aprobado y el dominio/hosting existan.
 Checklist copiado de `docs/replicacion/GO_LIVE.md`.
@@ -58,14 +60,14 @@ Checklist copiado de `docs/replicacion/GO_LIVE.md`.
    `ENTREGA.md`, `BRIEF_SITIO.md` ni `_dev-router.php`. Incluye todos los
    `.htaccess` (ocultos). No subas `.initial-control-password` si ya rotaron
    la clave; si el preview tiene `admin-users.json` vigente, usa ese.
-3. **Dominio.** `settings.siteUrl` = `https://lacasadelosgatos.mx`;
+3. **Dominio.** `settings.siteUrl` = `https://lacasadelosgatos.org`;
    `basePath` = `"auto"` o `""`. En `.htaccess`, el hostname canónico debe ser
-   `lacasadelosgatos.mx` (ya está). Si el dominio final es otro, cámbialo ahí
+   `lacasadelosgatos.org` (ya está). Si el dominio final es otro, cámbialo ahí
    y en SEO.
 4. **Subir** a `public_html/` de ese hosting (raíz, no subcarpeta). Permisos:
    `data/`, `backups/`, `assets/images/` → `755`; PHP → `644`. SSL antes o
    al mismo tiempo.
-5. **Verificar** en `https://lacasadelosgatos.mx/`: home, menú, CSS, una ficha
+5. **Verificar** en `https://lacasadelosgatos.org/`: home, menú, CSS, una ficha
    (`/adopciones/luna/`), `/contacto/`, `/control/login.php`. Regenerar
    sitemap. Rotar password. Si un enlace sigue en `/prospectos/casa_gatos/`,
    el sitio no está en DocumentRoot o `basePath` quedó forzado.
@@ -111,7 +113,7 @@ Estos valores quedaron con datos de ejemplo y hay que sustituirlos:
 
 1. **Teléfono y WhatsApp** — hoy `+52 779 123 4567`. Cambiar en
    **Ajustes → Contacto** y **Ajustes → WhatsApp**.
-2. **Correo** — hoy `contacto@lacasadelosgatos.mx`. Crear la cuenta en el hosting
+2. **Correo** — hoy `contacto@lacasadelosgatos.org`. Crear la cuenta en el hosting
    o apuntar a la real en **Ajustes → Contacto**.
 3. **Instagram y TikTok** — las URLs son suposiciones a partir del nombre.
    Confirmar o borrarlas en **Ajustes → Redes sociales** (si se dejan vacías,
@@ -124,8 +126,9 @@ Estos valores quedaron con datos de ejemplo y hay que sustituirlos:
 6. **Contenido semilla** — las 5 fichas de adopción, 3 campañas y 2 álbumes son
    ejemplos reales tomados del brief, pero conviene que el cliente los actualice
    con sus casos vigentes.
-7. **Dominio en `.htaccess`** — si el dominio final no es `lacasadelosgatos.mx`,
-   hay que cambiarlo en las dos reglas de redirección canónica.
+7. **Dominio** — `lacasadelosgatos.org` ya está en `.htaccess` (redirección
+   canónica www → apex y HTTP → HTTPS), `siteUrl`, JSON-LD, sitemap, robots y
+   `llms*.txt`. Falta registrarlo/apuntarlo al hosting y emitir el SSL.
 
 ---
 
@@ -186,6 +189,15 @@ también aplican al repositorio base y se anotaron en las specs de replicación:
    `PageImporter`, el catálogo de parciales de `CodeEditor` y el texto del login.
 6. En el editor de colecciones, un error de validación devolvía la galería como
    texto plano y se perdía al repintar el formulario.
+7. (2026-10-02, encontrado en el preview real de cPanel) Las redirecciones
+   301 del `.htaccess` usaban destinos relativos sin `RewriteBase`, y Apache
+   anteponía la ruta física del hosting (`/home1/<usuario>/…`). Ahora se arman
+   con `%{REQUEST_URI}` / `%{THE_REQUEST}`. Además `ErrorDocument 404 404.php`
+   imprimía el texto "404.php" (Apache no acepta rutas relativas ahí); se
+   sustituyó por una reescritura interna a `404.php`. Verificado con Apache 2.4
+   real en subcarpeta (`/prospectos/casa_gatos/`, con el `.htaccess` raíz de
+   Tizawebs) y en raíz de dominio: fichas, barra final, `index.php`, 404,
+   bloqueos 403 y redirección canónica de `lacasadelosgatos.org`.
 
 ---
 

@@ -89,7 +89,7 @@ class SecurityPolicy
             $settings = PageRegistry::settings();
         }
 
-        $siteUrl = rtrim((string) ($settings['siteUrl'] ?? 'https://lacasadelosgatos.mx'), '/');
+        $siteUrl = rtrim((string) ($settings['siteUrl'] ?? 'https://lacasadelosgatos.org'), '/');
 
         return $siteUrl . '/api/csp-report.php';
     }

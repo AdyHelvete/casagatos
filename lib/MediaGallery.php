@@ -125,7 +125,7 @@ class MediaGallery
 
     public static function publicUrl(string $webPath): string
     {
-        $host = $_SERVER['HTTP_HOST'] ?? 'lacasadelosgatos.mx';
+        $host = $_SERVER['HTTP_HOST'] ?? 'lacasadelosgatos.org';
         $scheme = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? 'https' : 'https';
 
         return $scheme . '://' . $host . $webPath;

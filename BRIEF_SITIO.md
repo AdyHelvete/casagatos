@@ -9,7 +9,7 @@ Estado: listo para generación (datos de contacto **demo**, editables en `/contr
 ## 1. Objetivo del proyecto
 
 - **Nombre del sitio / marca:** La Casa de los Gatos
-- **Dominio previsto:** `https://lacasadelosgatos.mx` (demo; configurar en panel/SEO)
+- **Dominio previsto:** `https://lacasadelosgatos.org` (definido el 2026-10-02; antes `.mx`)
 - **Modo de publicación:** `carpeta` (pruebas en tizawebs.com **antes** de comprar dominio)
 - **URL de pruebas:** `https://tizawebs.com/prospectos/casa_gatos/`
 - **Una frase de propuesta de valor:** Rescate, asistencia y adopción responsable; campañas y eventos que suman apoyo en la región.
@@ -31,7 +31,7 @@ Todos deben poder editarse desde `/control/` → Configuración (y formulario de
 
 - **Teléfono (E.164):** `+527791234567`
 - **Teléfono para mostrar:** `779 123 4567`
-- **Email de contacto:** `contacto@lacasadelosgatos.mx`
+- **Email de contacto:** `contacto@lacasadelosgatos.org`
 - **Ubicación / ciudad:** Tizayuca, Hidalgo (operación regional)
 - **WhatsApp (dígitos):** `527791234567`
 - **Mensaje por defecto de WhatsApp:** `Hola La Casa de los Gatos, me interesa conocer más sobre adopción o cómo apoyar.`
