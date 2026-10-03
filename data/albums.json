@@ -1,0 +1,39 @@
+{
+  "items": [
+    {
+      "id": "rescates-y-hogares-temporales",
+      "title": "Rescates y hogares temporales",
+      "summary": "Los gatos que han pasado por nuestras manos antes de encontrar familia.",
+      "cover": "/assets/images/gato-luna.jpg",
+      "gallery": [
+        "/assets/images/gato-luna.jpg",
+        "/assets/images/gato-pancho.jpg",
+        "/assets/images/gato-mia.jpg",
+        "/assets/images/gato-nube.jpg",
+        "/assets/images/gato-tomas.jpg"
+      ],
+      "published": true,
+      "featured": true,
+      "order": 10,
+      "createdAt": "2026-08-18T09:00:00-06:00",
+      "updatedAt": "2026-08-18T09:00:00-06:00"
+    },
+    {
+      "id": "campanas-y-eventos",
+      "title": "Campañas y eventos",
+      "summary": "Jornadas de esterilización, colectas y trabajo comunitario en Tizayuca y la zona.",
+      "cover": "/assets/images/evento-tizayuca-01.jpg",
+      "gallery": [
+        "/assets/images/evento-tizayuca-01.jpg",
+        "/assets/images/evento-tizayuca-02.jpg",
+        "/assets/images/evento-tizayuca-03.jpg",
+        "/assets/images/campana-esterilizacion.jpg"
+      ],
+      "published": true,
+      "featured": true,
+      "order": 20,
+      "createdAt": "2026-08-18T09:10:00-06:00",
+      "updatedAt": "2026-08-18T09:10:00-06:00"
+    }
+  ]
+}

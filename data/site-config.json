@@ -1,0 +1,54 @@
+{
+  "brand": {
+    "name": "La Casa de los Gatos"
+  },
+  "logos": {
+    "primary": "/assets/logo/casa_gatos_logo.jpg",
+    "icon": "/assets/logo/casa_gatos_logo.jpg",
+    "version": 1
+  },
+  "contact": {
+    "phone": "+527791234567",
+    "phoneDisplay": "779 123 4567",
+    "phoneDisplayIntl": "+52 779 123 4567",
+    "email": "contacto@lacasadelosgatos.mx",
+    "location": "Tizayuca, Hidalgo"
+  },
+  "whatsapp": {
+    "phone": "527791234567",
+    "defaultMessage": "Hola La Casa de los Gatos, me interesa conocer más sobre adopción o cómo apoyar.",
+    "floatLabel": "¿Quieres adoptar o ayudar?"
+  },
+  "social": {
+    "facebook": "https://www.facebook.com/mx.lacasadelosgatos",
+    "instagram": "https://www.instagram.com/lacasadelosgatos",
+    "tiktok": "https://www.tiktok.com/@lacasadelosgatos"
+  },
+  "footer": {
+    "tagline": "Rescate, asistencia y adopción responsable en Tizayuca y la zona. #AdoptaNoCompres",
+    "geoText": "es una iniciativa de rescate y adopción responsable de gatos en Tizayuca, Hidalgo, con alcance en Tecámac, Zumpango y municipios cercanos. Realizamos campañas de esterilización, vacunación y eventos de apoyo.",
+    "privacyLabel": "Aviso de privacidad",
+    "bottomNote": "Adopta, no compres."
+  },
+  "forms": {
+    "contact": {
+      "services": [
+        "Quiero adoptar",
+        "Quiero ser hogar temporal",
+        "Quiero donar o apoyar una campaña",
+        "Información sobre eventos",
+        "Otro"
+      ],
+      "minSeconds": 3,
+      "maxAgeSeconds": 7200,
+      "tokenTtl": 3600,
+      "rateHour": 5,
+      "rateDay": 20,
+      "minMessageLength": 10,
+      "maxLinks": 3,
+      "whatsappHandoff": true,
+      "successMessage": "Gracias. Te contactaremos pronto. Mientras tanto síguenos en Facebook.",
+      "notifyEmail": ""
+    }
+  }
+}

@@ -1,0 +1,48 @@
+Options -Indexes
+DirectoryIndex index.php index.html
+RewriteEngine On
+
+# Bloquear acceso directo a carpetas internas.
+RewriteRule ^lib(/|$) - [F,L]
+RewriteRule ^data(/|$) - [F,L]
+RewriteRule ^backups(/|$) - [F,L]
+
+<IfModule mod_headers.c>
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set X-Frame-Options "SAMEORIGIN"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set Permissions-Policy "camera=(), microphone=(), geolocation=()"
+  Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains" env=HTTPS
+</IfModule>
+
+# Canonical host: solo cuando el sitio ya vive en el dominio del cliente.
+# En preview (tizawebs.com/prospectos/...) estas reglas no deben dispararse.
+RewriteCond %{HTTP_HOST} ^www\.lacasadelosgatos\.mx$ [NC]
+RewriteRule ^ https://lacasadelosgatos.mx%{REQUEST_URI} [L,R=301]
+
+RewriteCond %{HTTPS} !=on
+RewriteCond %{HTTP_HOST} ^(www\.)?lacasadelosgatos\.mx$ [NC]
+RewriteRule ^ https://lacasadelosgatos.mx%{REQUEST_URI} [L,R=301]
+
+# El panel y las APIs son apps PHP: no aplicar reglas de URL limpias.
+RewriteRule ^control(/|$) - [L]
+RewriteRule ^api(/|$) - [L]
+
+# Sustituciones relativas: funcionan en raíz y en /prospectos/<slug>/.
+RewriteCond %{THE_REQUEST} \s/.*/index\.php[\s?] [NC]
+RewriteRule ^index\.php$ ./ [R=301,L]
+
+# Fichas de contenido administrable: canonical con barra final.
+RewriteCond %{REQUEST_URI} /(adopciones|campanas|galeria)/[a-z0-9-]+$
+RewriteRule ^(.+)$ $1/ [R=301,L]
+
+RewriteRule ^adopciones/([a-z0-9-]+)/$ adopciones/detalle.php?id=$1 [L,QSA]
+RewriteRule ^campanas/([a-z0-9-]+)/$ campanas/detalle.php?id=$1 [L,QSA]
+RewriteRule ^galeria/([a-z0-9-]+)/$ galeria/album.php?id=$1 [L,QSA]
+
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteCond %{REQUEST_URI} !/$
+RewriteRule ^(.+[^/])$ $1/ [R=301,L]
+
+# Relativo a este folder (no /404.php de la raíz del hosting).
+ErrorDocument 404 404.php

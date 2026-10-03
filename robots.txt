@@ -1,0 +1,36 @@
+User-agent: *
+Allow: /
+Disallow: /control/
+Disallow: /api/
+Disallow: /data/
+Disallow: /backups/
+
+User-agent: Googlebot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+# Índice curado para modelos de lenguaje (GEO)
+# https://lacasadelosgatos.mx/llms.txt
+# Contenido completo: https://lacasadelosgatos.mx/llms-full.txt
+
+Sitemap: https://lacasadelosgatos.mx/sitemap.xml

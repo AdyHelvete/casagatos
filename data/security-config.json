@@ -1,0 +1,8 @@
+{
+  "csp": {
+    "mode": "report-only"
+  },
+  "secrets": {
+    "contactRotatedAt": null
+  }
+}

@@ -1,0 +1,126 @@
+{
+    "items": [
+        {
+            "id": "luna",
+            "order": 10,
+            "createdAt": "2026-08-20T10:00:00-06:00",
+            "updatedAt": "2026-08-20T10:00:00-06:00",
+            "name": "Luna",
+            "age": "3 meses",
+            "sex": "Hembra",
+            "size": "Pequeña",
+            "temperament": "Tranquila, dormilona, muy apegada",
+            "summary": "Rescatada en Tizayuca con sus hermanos. Ya come sola, usa arenero y busca una familia paciente.",
+            "cover": "/assets/images/gato-luna.jpg",
+            "ctaLabel": "Quiero adoptar a Luna",
+            "ctaUrl": "",
+            "story": "<p>Luna llegó con tres semanas de vida junto a sus hermanos. Pasó por hogar temporal, desparasitación y sus primeras vacunas.</p><p>Es una gata tranquila que disfruta las siestas largas y la compañía. Se adapta bien a departamento y convive con otros gatos.</p><p>Buscamos una familia que entienda que un gato es un compromiso de 15 años o más.</p>",
+            "published": true,
+            "featured": true,
+            "sterilized": false,
+            "vaccinated": true,
+            "gallery": [
+                "/assets/images/gato-luna.jpg",
+                "/assets/images/gato-nube.jpg"
+            ],
+            "status": "disponible"
+        },
+        {
+            "id": "pancho",
+            "order": 20,
+            "createdAt": "2026-08-20T10:05:00-06:00",
+            "updatedAt": "2026-08-20T10:05:00-06:00",
+            "name": "Pancho",
+            "age": "8 meses",
+            "sex": "Macho",
+            "size": "Mediano",
+            "temperament": "Juguetón, sociable, muy curioso",
+            "summary": "Blanco y negro, esterilizado y vacunado. Ideal para una casa con niños o con otros gatos.",
+            "cover": "/assets/images/gato-pancho.jpg",
+            "ctaLabel": "Quiero adoptar a Pancho",
+            "ctaUrl": "",
+            "story": "<p>Pancho fue rescatado de la calle cuando tenía cuatro meses. Hoy está esterilizado, vacunado y desparasitado.</p><p>Es sociable con personas y con otros gatos. Le encanta jugar con pelotas y dormir junto a la ventana.</p>",
+            "published": true,
+            "featured": true,
+            "sterilized": true,
+            "vaccinated": true,
+            "gallery": [
+                "/assets/images/gato-pancho.jpg"
+            ],
+            "status": "disponible"
+        },
+        {
+            "id": "mia",
+            "order": 30,
+            "createdAt": "2026-08-20T10:10:00-06:00",
+            "updatedAt": "2026-08-20T10:10:00-06:00",
+            "name": "Mía",
+            "age": "2 meses",
+            "sex": "Hembra",
+            "size": "Pequeña",
+            "temperament": "Curiosa, activa, sin miedo",
+            "summary": "Atigrada de guantes blancos. Está en hogar temporal y busca familia definitiva.",
+            "cover": "/assets/images/gato-mia.jpg",
+            "ctaLabel": "Quiero adoptar a Mía",
+            "ctaUrl": "",
+            "story": "<p>Mía apareció dentro de una caja en la vía pública. Desde el primer día mostró un carácter fuerte y curioso.</p><p>Por su edad, necesita una familia con tiempo para acompañarla en sus primeros meses y completar su esquema de vacunación.</p>",
+            "published": true,
+            "featured": true,
+            "sterilized": false,
+            "vaccinated": true,
+            "gallery": [
+                "/assets/images/gato-mia.jpg",
+                "/assets/images/gato-tomas.jpg"
+            ],
+            "status": "disponible"
+        },
+        {
+            "id": "tomas",
+            "order": 40,
+            "createdAt": "2026-08-20T10:15:00-06:00",
+            "updatedAt": "2026-08-20T10:15:00-06:00",
+            "name": "Tomás",
+            "age": "3 meses",
+            "sex": "Macho",
+            "size": "Pequeño",
+            "temperament": "Cariñoso, tranquilo con otros gatos",
+            "summary": "Tiene una solicitud de adopción en revisión. Si no se concreta, vuelve a estar disponible.",
+            "cover": "/assets/images/gato-tomas.jpg",
+            "ctaLabel": "",
+            "ctaUrl": "",
+            "story": "<p>Tomás está en proceso de adopción: la familia interesada ya envió su solicitud y estamos haciendo la entrevista y la visita.</p><p>Si el proceso no se concreta, su ficha vuelve a estar disponible.</p>",
+            "published": true,
+            "featured": false,
+            "sterilized": false,
+            "vaccinated": true,
+            "gallery": [
+                "/assets/images/gato-tomas.jpg"
+            ],
+            "status": "en-proceso"
+        },
+        {
+            "id": "nube",
+            "order": 50,
+            "createdAt": "2026-08-20T10:20:00-06:00",
+            "updatedAt": "2026-08-20T10:20:00-06:00",
+            "name": "Nube",
+            "age": "3 meses",
+            "sex": "Hembra",
+            "size": "Pequeña",
+            "temperament": "Dulce y muy dormilona",
+            "summary": "¡Ya encontró hogar! Nube vive en Tecámac con una familia que la adora.",
+            "cover": "/assets/images/gato-nube.jpg",
+            "ctaLabel": "",
+            "ctaUrl": "",
+            "story": "<p>Nube fue rescatada junto con Luna. Después de dos meses en hogar temporal, encontró familia definitiva en Tecámac.</p><p>Historias como la suya son posibles gracias a quienes comparten, donan y adoptan.</p>",
+            "published": true,
+            "featured": false,
+            "sterilized": true,
+            "vaccinated": true,
+            "gallery": [
+                "/assets/images/gato-nube.jpg"
+            ],
+            "status": "adoptado"
+        }
+    ]
+}

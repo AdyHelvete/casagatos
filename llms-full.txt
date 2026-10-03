@@ -1,0 +1,125 @@
+# La Casa de los Gatos — contenido completo
+
+> Rescate, asistencia veterinaria y adopción responsable de gatos en Tizayuca, Hidalgo. Alcance en Tecámac, Zumpango y municipios cercanos. #AdoptaNoCompres
+> Sitio: https://lacasadelosgatos.mx/ · Idioma: es-MX · Última revisión de este documento: 2026-08
+
+---
+
+## Ficha de la organización
+
+- Nombre: La Casa de los Gatos
+- Tipo: iniciativa ciudadana de rescate y adopción responsable (sin albergue físico)
+- Base: Tizayuca, Hidalgo, México
+- Zona de trabajo: Tizayuca, Tecámac, Zumpango y municipios cercanos
+- WhatsApp/Teléfono: +52 779 123 4567
+- Correo: contacto@lacasadelosgatos.mx
+- Facebook: https://www.facebook.com/mx.lacasadelosgatos
+- Instagram: https://www.instagram.com/lacasadelosgatos
+- TikTok: https://www.tiktok.com/@lacasadelosgatos
+
+---
+
+## Inicio
+
+https://lacasadelosgatos.mx/
+
+Adopta. No compres. Rescatamos gatos en situación de calle en Tizayuca y la zona, les damos atención veterinaria y buscamos hogar responsable.
+
+Puntos clave que comunica la página:
+
+- Gatos disponibles para adopción, con ficha individual.
+- Campañas y eventos abiertos en los que cualquier persona puede participar.
+- Formas de apoyar sin adoptar: hogar temporal, donativos en especie, difusión.
+- Contacto directo por WhatsApp y por formulario.
+
+---
+
+## Nosotros
+
+https://lacasadelosgatos.mx/nosotros/
+
+Somos vecinos de Tizayuca que rescatan, curan y buscan hogar responsable para gatos.
+
+- No operamos un albergue: los gatos viven en hogares temporales mientras encuentran familia.
+- Atendemos rescates urgentes según capacidad disponible de hogares temporales y recursos veterinarios.
+- Organizamos jornadas de esterilización a costo accesible con veterinarios aliados.
+- Damos seguimiento posterior a cada adopción.
+
+---
+
+## Adopciones
+
+https://lacasadelosgatos.mx/adopciones/
+
+Catálogo de gatos con ficha individual. Cada ficha indica nombre, edad, sexo, tamaño, carácter, estado de esterilización y vacunación, historia del rescate y fotografías.
+
+Estados posibles de una ficha:
+
+- Disponible: se pueden enviar solicitudes de adopción.
+- En proceso: hay una solicitud en revisión (entrevista y visita). Si no se concreta, vuelve a estar disponible.
+- Adoptado: el gato ya tiene familia definitiva; la ficha se conserva como historia de éxito.
+
+URL de cada ficha: https://lacasadelosgatos.mx/adopciones/<nombre>/
+
+---
+
+## Cómo adoptar
+
+https://lacasadelosgatos.mx/como-adoptar/
+
+El proceso de adopción tiene cinco pasos: contacto inicial, entrevista, visita o videollamada al hogar, carta compromiso y entrega con seguimiento.
+
+Requisitos generales:
+
+- Ser mayor de edad y presentar identificación oficial.
+- Contar con el acuerdo de todas las personas que viven en el domicilio.
+- Comprometerse a proteger ventanas y balcones.
+- Comprometerse a esterilizar al gato cuando tenga la edad adecuada, si aún no lo está.
+- Aceptar el seguimiento posterior a la adopción.
+- No entregamos gatos como regalo sorpresa ni para fines de reproducción.
+
+---
+
+## Campañas y eventos
+
+https://lacasadelosgatos.mx/campanas/
+
+Convocatorias abiertas y pasadas: jornadas de esterilización a bajo costo, colectas de alimento e insumos, y eventos de apoyo en Tizayuca y municipios cercanos.
+
+Cada campaña indica fechas, sede, resumen, requisitos de participación y forma de registro.
+
+URL de cada campaña: https://lacasadelosgatos.mx/campanas/<slug>/
+
+---
+
+## Galería
+
+https://lacasadelosgatos.mx/galeria/
+
+Álbumes fotográficos de rescates, hogares temporales, jornadas de esterilización y eventos.
+
+URL de cada álbum: https://lacasadelosgatos.mx/galeria/<slug>/
+
+---
+
+## Contacto
+
+https://lacasadelosgatos.mx/contacto/
+
+Canales de contacto: formulario del sitio, WhatsApp y correo electrónico.
+
+Motivos de contacto disponibles en el formulario:
+
+- Quiero adoptar
+- Quiero ser hogar temporal
+- Quiero donar o apoyar una campaña
+- Información sobre eventos
+- Otro
+
+---
+
+## Aviso de privacidad
+
+https://lacasadelosgatos.mx/aviso-de-privacidad/
+
+Describe qué datos personales se recaban a través del formulario de contacto y de las solicitudes de adopción, con qué finalidad se usan, cuánto tiempo se conservan y cómo ejercer los derechos ARCO, conforme a la LFPDPPP.

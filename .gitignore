@@ -1,0 +1,14 @@
+data/admin-users.json
+data/contact-submissions.json
+data/contact-submissions.xlsx
+data/.contact-secret
+data/.initial-control-password
+data/rate-limit.json
+data/contact-token-rate.json
+data/control-login-attempts.json
+data/media-gallery.json
+data/csp-reports.json
+data/security-events.json
+backups/**
+!backups/.htaccess
+_dev-router.php

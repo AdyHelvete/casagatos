@@ -1,0 +1,71 @@
+{
+  "items": [
+    {
+      "id": "jornada-esterilizacion-gratuita",
+      "title": "Jornada de esterilización gratuita",
+      "kind": "campana",
+      "status": "activa",
+      "startDate": "2026-09-14",
+      "endDate": "2026-09-14",
+      "place": "Tizayuca, Hidalgo",
+      "summary": "Esterilización gratuita para gatos y perros, en alianza con el Comité de Protección y Bienestar Animal y ARCY Adopciones y Rescates.",
+      "body": "<p>Realizamos una jornada de esterilización gratuita para gatos y perros de Tizayuca y municipios vecinos. Los cupos son limitados y se asignan por registro previo.</p><h3>Requisitos</h3><ul><li>Ayuno obligatorio de 8 horas (comida y agua).</li><li>Felinos en transportadora.</li><li>Caninos con correa.</li><li>Llevar cobija.</li></ul><h3>¿Por qué esterilizar?</h3><p>La esterilización es la forma más efectiva de reducir el abandono. Una gata sin esterilizar puede tener hasta tres camadas al año.</p><p>Escríbenos por WhatsApp o mensaje en Facebook para apartar tu lugar.</p>",
+      "cover": "/assets/images/campana-esterilizacion.jpg",
+      "gallery": [
+        "/assets/images/campana-esterilizacion.jpg"
+      ],
+      "published": true,
+      "featured": true,
+      "ctaLabel": "Apartar lugar",
+      "ctaUrl": "/contacto/",
+      "order": 10,
+      "createdAt": "2026-08-15T09:00:00-06:00",
+      "updatedAt": "2026-08-15T09:00:00-06:00"
+    },
+    {
+      "id": "festival-del-papalote",
+      "title": "Festival del Papalote: colecta de alimento",
+      "kind": "evento",
+      "status": "proxima",
+      "startDate": "2026-10-05",
+      "endDate": "2026-10-05",
+      "place": "Explanada municipal, Tizayuca",
+      "summary": "Módulo de concientización y colecta de alimento, arena y cobijas para los gatos en hogar temporal.",
+      "body": "<p>Estaremos con un módulo en el Festival del Papalote para platicar sobre adopción responsable y recibir donaciones en especie.</p><h3>Qué necesitamos</h3><ul><li>Alimento para gato (adulto y cachorro).</li><li>Arena sanitaria.</li><li>Cobijas y toallas en buen estado.</li><li>Transportadoras que ya no uses.</li></ul><p>Si no puedes asistir, escríbenos y coordinamos un punto de entrega.</p>",
+      "cover": "/assets/images/evento-tizayuca-02.jpg",
+      "gallery": [
+        "/assets/images/evento-tizayuca-02.jpg",
+        "/assets/images/evento-tizayuca-03.jpg"
+      ],
+      "published": true,
+      "featured": true,
+      "ctaLabel": "Quiero donar",
+      "ctaUrl": "/contacto/",
+      "order": 20,
+      "createdAt": "2026-08-16T09:00:00-06:00",
+      "updatedAt": "2026-08-16T09:00:00-06:00"
+    },
+    {
+      "id": "iniciativa-bienestar-animal-tizayuca",
+      "title": "Iniciativa de bienestar animal en Tizayuca",
+      "kind": "campana",
+      "status": "finalizada",
+      "startDate": "2026-06-20",
+      "endDate": "2026-06-20",
+      "place": "Presidencia Municipal de Tizayuca",
+      "summary": "Entregamos una propuesta ciudadana para reforzar el reglamento de protección animal del municipio.",
+      "body": "<p>Junto con otras asociaciones de la zona entregamos una propuesta formal ante la presidencia municipal para reforzar el reglamento de protección y bienestar animal.</p><p>La propuesta incluye jornadas permanentes de esterilización, sanciones efectivas contra el maltrato y un padrón de rescatistas independientes.</p><p>Seguimos dando seguimiento al proceso. Te contamos los avances en nuestras redes.</p>",
+      "cover": "/assets/images/evento-tizayuca-01.jpg",
+      "gallery": [
+        "/assets/images/evento-tizayuca-01.jpg"
+      ],
+      "published": true,
+      "featured": false,
+      "ctaLabel": "",
+      "ctaUrl": "",
+      "order": 30,
+      "createdAt": "2026-06-21T09:00:00-06:00",
+      "updatedAt": "2026-06-21T09:00:00-06:00"
+    }
+  ]
+}
