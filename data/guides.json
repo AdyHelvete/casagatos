@@ -1,0 +1,95 @@
+{
+  "items": [
+    {
+      "id": "gato-herido-o-atropellado",
+      "order": 10,
+      "createdAt": "2026-10-04T09:00:00-06:00",
+      "updatedAt": "2026-10-04T09:00:00-06:00",
+      "title": "Encontré un gato herido o atropellado",
+      "summary": "Lo primero es llevarlo a una clínica: nosotros no podemos atenderlo a distancia.",
+      "ctaLabel": "Ver clínicas con urgencias",
+      "ctaUrl": "/directorio/",
+      "body": "<ol><li>Acércate despacio. Un gato con dolor puede morder o arañar aunque sea dócil.</li><li>Envuélvelo con una toalla o cobija y colócalo en una caja o transportadora con ventilación.</li><li>No le des comida, agua ni medicamentos de uso humano.</li><li>Llévalo a la clínica más cercana del directorio y avisa por teléfono que vas en camino.</li><li>Escríbenos con una foto y la ubicación para orientarte sobre lo que sigue.</li></ol>",
+      "published": true,
+      "urgent": true
+    },
+    {
+      "id": "camada-de-gatitos",
+      "order": 20,
+      "createdAt": "2026-10-04T09:05:00-06:00",
+      "updatedAt": "2026-10-04T09:05:00-06:00",
+      "title": "Encontré una camada de gatitos",
+      "summary": "No los levantes de inmediato: lo más probable es que la mamá esté cerca.",
+      "ctaLabel": "Conocer el TNR",
+      "ctaUrl": "/tnr/",
+      "body": "<ol><li>Observa a distancia durante algunas horas. La madre sale a buscar comida y regresa.</li><li>Si los gatitos están limpios, tranquilos y juntos, tienen mamá: no los separes.</li><li>Si están fríos, sucios, llorando sin parar o en un lugar de riesgo, entonces sí necesitan ayuda.</li><li>Mantenlos calientes con una botella de agua tibia envuelta en una toalla. No les des leche de vaca.</li><li>Escríbenos: te orientamos sobre alimentación y, cuando tengan edad, sobre la esterilización de la madre y de la camada.</li></ol>",
+      "published": true,
+      "urgent": false
+    },
+    {
+      "id": "gato-perdido-o-encontrado",
+      "order": 30,
+      "createdAt": "2026-10-04T09:10:00-06:00",
+      "updatedAt": "2026-10-04T09:10:00-06:00",
+      "title": "Se perdió mi gato o encontré uno que parece tener casa",
+      "summary": "Las primeras 48 horas son las más importantes.",
+      "ctaLabel": "",
+      "ctaUrl": "",
+      "body": "<ul><li>Busca primero cerca de casa, de noche y en silencio: los gatos perdidos se esconden a pocos metros.</li><li>Deja afuera su arenero o una prenda con tu olor.</li><li>Pregunta a vecinos y revisa azoteas, cocheras y bodegas.</li><li>Publica en grupos vecinales de Facebook con foto, zona y fecha. Envíanos la publicación para compartirla.</li><li>Si encontraste un gato sociable y bien cuidado, publícalo antes de darlo en adopción: puede tener familia buscándolo.</li></ul>",
+      "published": true,
+      "urgent": false
+    },
+    {
+      "id": "colonia-de-gatos-en-mi-calle",
+      "order": 40,
+      "createdAt": "2026-10-04T09:15:00-06:00",
+      "updatedAt": "2026-10-04T09:15:00-06:00",
+      "title": "Hay una colonia de gatos en mi calle",
+      "summary": "La solución no es retirarlos: es esterilizarlos.",
+      "ctaLabel": "Ver jornadas disponibles",
+      "ctaUrl": "/tnr/#jornadas",
+      "body": "<ul><li>Cuenta cuántos son e identifica a quien los alimenta.</li><li>Establece un horario fijo de comida: facilita el trampeo.</li><li>Regístrate en la siguiente jornada TNR.</li><li>No los envenenes ni los reubiques: además de ser cruel, puede constituir un delito y no resuelve el problema.</li></ul>",
+      "published": true,
+      "urgent": false
+    },
+    {
+      "id": "caso-de-maltrato",
+      "order": 50,
+      "createdAt": "2026-10-04T09:20:00-06:00",
+      "updatedAt": "2026-10-04T09:20:00-06:00",
+      "title": "Soy testigo de un caso de maltrato",
+      "summary": "Documenta y denuncia. No confrontes a la persona agresora.",
+      "ctaLabel": "Cómo denunciar",
+      "ctaUrl": "/asistencia/#denuncias",
+      "body": "<ul><li>Si la agresión está ocurriendo en este momento, llama al 911.</li><li>Toma fotos o video desde un lugar seguro y anota fecha, hora y dirección.</li><li>Presenta la denuncia ante la instancia que corresponde. Los pasos están en la sección de denuncias de esta página.</li><li>Escríbenos con tu número de folio si necesitas acompañamiento.</li></ul>",
+      "published": true,
+      "urgent": true
+    },
+    {
+      "id": "ya-no-puedo-cuidar-a-mi-gato",
+      "order": 60,
+      "createdAt": "2026-10-04T09:25:00-06:00",
+      "updatedAt": "2026-10-04T09:25:00-06:00",
+      "title": "Ya no puedo cuidar a mi gato",
+      "summary": "Abandonarlo no es una opción. Hay alternativas.",
+      "ctaLabel": "Escríbenos",
+      "ctaUrl": "/contacto/",
+      "body": "<ul><li>Cuéntanos la causa: muchas veces tiene solución (alergias, conducta, mudanza, gastos).</li><li>Si de verdad no puede quedarse contigo, busca tú a la nueva familia con nuestra orientación: nadie lo conoce mejor.</li><li>Entrégalo esterilizado, con su historial y con una carta compromiso.</li><li>No tenemos albergue, así que no podemos recibirlo de inmediato; sí podemos difundir su caso.</li></ul>",
+      "published": true,
+      "urgent": false
+    },
+    {
+      "id": "que-es-la-onicectomia",
+      "order": 70,
+      "createdAt": "2026-10-04T09:30:00-06:00",
+      "updatedAt": "2026-10-04T09:30:00-06:00",
+      "title": "Me recomendaron \"quitarle las garras\" a mi gato",
+      "summary": "La onicectomía es una amputación, no un corte de uñas.",
+      "ctaLabel": "Leer la explicación completa",
+      "ctaUrl": "/adopcion/#onicectomia",
+      "body": "<p>En la onicectomía no se cortan ni se retiran las uñas: se amputa la última falange de cada dedo, el hueso del que nace la uña. No es un procedimiento estético ni inofensivo, y puede dejar dolor crónico y problemas de conducta.</p><p>Si tu gato rasguña los muebles, la solución son los rascadores, el corte de la punta de las uñas y el juego diario.</p>",
+      "published": true,
+      "urgent": false
+    }
+  ]
+}

@@ -1,0 +1,92 @@
+{
+    "items": [
+        {
+            "id": "clinica-de-ejemplo-centro",
+            "order": 10,
+            "createdAt": "2026-10-04T09:00:00-06:00",
+            "updatedAt": "2026-10-04T09:00:00-06:00",
+            "name": "Clínica de ejemplo · Centro",
+            "summary": "Ficha de muestra. Sustitúyela por una clínica real desde el panel: aquí va una frase sobre el tipo de atención que ofrece.",
+            "specialty": "",
+            "address": "Calle y número, colonia Centro, Tizayuca, Hgo.",
+            "phone": "",
+            "whatsapp": "",
+            "hours": "Lunes a sábado, 10:00 a 19:00 h",
+            "mapUrl": "",
+            "published": true,
+            "emergency": false,
+            "services": [
+                "Consulta general",
+                "Vacunación",
+                "Desparasitación"
+            ],
+            "zone": "tizayuca"
+        },
+        {
+            "id": "clinica-de-ejemplo-esterilizacion",
+            "order": 20,
+            "createdAt": "2026-10-04T09:05:00-06:00",
+            "updatedAt": "2026-10-04T09:05:00-06:00",
+            "name": "Clínica de ejemplo · Esterilización",
+            "summary": "Ficha de muestra. Úsala para las clínicas que esterilizan a bajo costo o que apoyan las jornadas.",
+            "specialty": "",
+            "address": "Calle y número, colonia, Tizayuca, Hgo.",
+            "phone": "",
+            "whatsapp": "",
+            "hours": "Lunes a viernes, 9:00 a 17:00 h",
+            "mapUrl": "",
+            "published": true,
+            "emergency": false,
+            "services": [
+                "Esterilización",
+                "Consulta general",
+                "Cirugía menor"
+            ],
+            "zone": "tizayuca"
+        },
+        {
+            "id": "clinica-de-ejemplo-urgencias",
+            "order": 30,
+            "createdAt": "2026-10-04T09:10:00-06:00",
+            "updatedAt": "2026-10-04T09:10:00-06:00",
+            "name": "Clínica de ejemplo · Urgencias",
+            "summary": "Ficha de muestra. Marca la casilla \"Atiende urgencias\" para que la clínica muestre la etiqueta naranja.",
+            "specialty": "",
+            "address": "Calle y número, colonia, Tizayuca, Hgo.",
+            "phone": "",
+            "whatsapp": "",
+            "hours": "Todos los días, 24 horas",
+            "mapUrl": "",
+            "published": true,
+            "emergency": true,
+            "services": [
+                "Urgencias",
+                "Hospitalización",
+                "Consulta general"
+            ],
+            "zone": "tizayuca"
+        },
+        {
+            "id": "clinica-de-ejemplo-zumpango",
+            "order": 40,
+            "createdAt": "2026-10-04T09:15:00-06:00",
+            "updatedAt": "2026-10-04T09:15:00-06:00",
+            "name": "Clínica de ejemplo · Zumpango",
+            "summary": "Ficha de muestra para las clínicas de Zumpango, que se recomiendan solo en casos específicos.",
+            "specialty": "Estudios de imagen y cirugías que no se realizan en Tizayuca.",
+            "address": "Calle y número, colonia, Zumpango, Edo. Méx.",
+            "phone": "",
+            "whatsapp": "",
+            "hours": "Lunes a sábado, 9:00 a 20:00 h",
+            "mapUrl": "",
+            "published": true,
+            "emergency": false,
+            "services": [
+                "Rayos X",
+                "Ultrasonido",
+                "Cirugía especializada"
+            ],
+            "zone": "zumpango"
+        }
+    ]
+}

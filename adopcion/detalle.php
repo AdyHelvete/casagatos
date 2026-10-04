@@ -32,20 +32,23 @@ $ctaUrl = tw_url(trim((string) ($item['ctaUrl'] ?? '')));
 $whatsapp = tw_whatsapp_url('Hola La Casa de los Gatos, me interesa adoptar a ' . $name . '. ¿Sigue disponible?');
 $adoptable = $status === 'disponible';
 
+$adopted = $status === 'adoptado';
+
 $overrides = [
-    'title' => $name . ' en adopción | La Casa de los Gatos',
+    'title' => $name . ($adopted ? ', una historia feliz' : ' en adopción') . ' | La Casa de los Gatos',
     'description' => (string) $item['summary'],
-    'canonical' => '/adopciones/' . $item['id'] . '/',
-    'ogTitle' => $name . ' busca hogar',
+    'canonical' => '/adopcion/' . $item['id'] . '/',
+    'ogTitle' => $adopted ? $name . ' ya encontró familia' : $name . ' busca hogar',
     'ogDescription' => (string) $item['summary'],
-    'ogImage' => $cover,
+    'ogImage' => $coverPath,
     'ogType' => 'article',
+    'jsonLd' => '',
 ];
 ?>
-<?php tw_page_start('adopciones', $overrides); ?>
+<?php tw_page_start('adopcion', $overrides); ?>
   <main id="contenido">
     <section class="page-hero page-hero--plain"><div class="container">
-      <p class="breadcrumbs"><a href="<?php echo tw_esc(tw_url('/')); ?>">Inicio</a> / <a href="<?php echo tw_esc(tw_url('/adopciones/')); ?>">Adopciones</a> / <?php echo tw_esc($name); ?></p>
+      <p class="breadcrumbs"><a href="<?php echo tw_esc(tw_url('/')); ?>">Inicio</a> / <a href="<?php echo tw_esc(tw_url('/adopcion/')); ?>">Adopción</a> / <?php echo tw_esc($name); ?></p>
       <?php if ($statusLabel !== ''): ?>
         <span class="badge <?php echo tw_esc(tw_badge_class($status)); ?>"><?php echo tw_esc($statusLabel); ?></span>
       <?php endif; ?>
@@ -57,7 +60,7 @@ $overrides = [
       <div class="detail-layout">
         <div>
           <div class="detail-media reveal">
-            <img src="<?php echo tw_esc($cover); ?>" alt="<?php echo tw_esc($name); ?> en adopción" width="1024" height="1024" fetchpriority="high">
+            <img src="<?php echo tw_esc($cover); ?>" alt="<?php echo tw_esc($name . ($adopted ? ', adoptado' : ' en adopción')); ?>" width="1024" height="1024" fetchpriority="high">
           </div>
 
           <?php if (trim((string) $item['story']) !== ''): ?>
@@ -91,15 +94,15 @@ $overrides = [
               <?php elseif ($whatsapp !== ''): ?>
                 <a class="btn" href="<?php echo tw_esc($whatsapp); ?>" target="_blank" rel="noopener" data-track-button="adopcion-whatsapp"><?php echo tw_esc($ctaLabel); ?></a>
               <?php endif; ?>
-              <a class="btn btn--outline" href="<?php echo tw_esc(tw_url('/contacto/')); ?>">Enviar solicitud</a>
+              <a class="btn btn--outline" href="<?php echo tw_esc(tw_url('/adopcion/')); ?>?gato=<?php echo tw_esc((string) $item['id']); ?>#cuestionario">Llenar cuestionario</a>
             </div>
-            <p style="font-size:.86rem">Antes de escribir, revisa <a href="<?php echo tw_esc(tw_url('/como-adoptar/')); ?>" style="color:var(--blue);font-weight:600">cómo es el proceso</a>.</p>
+            <p style="font-size:.86rem">Antes de escribir, revisa los <a href="<?php echo tw_esc(tw_url('/adopcion/')); ?>#requisitos" style="color:var(--blue);font-weight:600">requisitos y el proceso</a>.</p>
           <?php elseif ($status === 'en-proceso'): ?>
             <p>Esta ficha tiene una solicitud en revisión. Si el proceso no se concreta, vuelve a estar disponible.</p>
-            <a class="btn btn--outline" href="<?php echo tw_esc(tw_url('/adopciones/')); ?>">Ver otros disponibles</a>
+            <a class="btn btn--outline" href="<?php echo tw_esc(tw_url('/adopcion/')); ?>#gatos">Ver otros disponibles</a>
           <?php else: ?>
             <p>¡<?php echo tw_esc($name); ?> ya encontró familia! Gracias a quienes compartieron su historia.</p>
-            <a class="btn" href="<?php echo tw_esc(tw_url('/adopciones/')); ?>?estado=disponible">Ver quiénes siguen esperando</a>
+            <a class="btn" href="<?php echo tw_esc(tw_url('/adopcion/')); ?>#gatos">Ver quiénes siguen esperando</a>
           <?php endif; ?>
         </aside>
       </div>

@@ -1,8 +1,8 @@
 # La Casa de los Gatos
 
-> Rescate, asistencia veterinaria y adopción responsable de gatos en Tizayuca, Hidalgo, con alcance en Tecámac, Zumpango y municipios cercanos. #AdoptaNoCompres
+> Proyecto vecinal de Tizayuca, Hidalgo: control ético de gatos de calle (TNR), adopción responsable, orientación para rescates y denuncias, y directorio de clínicas veterinarias de Tizayuca y Zumpango. #AdoptaNoCompres
 
-La Casa de los Gatos es una iniciativa ciudadana sin albergue físico: trabaja con hogares temporales, campañas de esterilización y eventos de apoyo. Toda adopción incluye entrevista, carta compromiso y seguimiento posterior.
+La Casa de los Gatos es una iniciativa ciudadana sin albergue físico. Promueve el TNR (trampeo, esterilización y retorno) y las jornadas de esterilización, da en adopción gatos rescatados mediante un proceso con cuestionario, visita al hogar y seguimiento, y orienta a la comunidad sobre qué hacer y dónde denunciar cuando un animal está en riesgo.
 
 - WhatsApp/Teléfono: +52 779 123 4567
 - Correo: contacto@lacasadelosgatos.org
@@ -13,21 +13,20 @@ La Casa de los Gatos es una iniciativa ciudadana sin albergue físico: trabaja c
 
 ## Páginas principales
 
-- [Inicio](https://lacasadelosgatos.org/): Gatos en adopción, campañas abiertas y formas de apoyar.
-- [Nosotros](https://lacasadelosgatos.org/nosotros/): Quiénes somos, qué hacemos y cómo operamos sin albergue.
-- [Adopciones](https://lacasadelosgatos.org/adopciones/): Fichas de gatos disponibles, en proceso y adoptados.
-- [Cómo adoptar](https://lacasadelosgatos.org/como-adoptar/): Proceso paso a paso, requisitos y preguntas frecuentes.
-- [Campañas y eventos](https://lacasadelosgatos.org/campanas/): Jornadas de esterilización, colectas y eventos de apoyo.
-- [Galería](https://lacasadelosgatos.org/galeria/): Álbumes de rescates, hogares temporales y jornadas.
+- [Inicio](https://lacasadelosgatos.org/): Presentación del proyecto y acceso rápido a las demás secciones.
+- [TNR](https://lacasadelosgatos.org/tnr/): Qué es el trampeo, esterilización y retorno, orientación sobre la esterilización, jornadas disponibles y control ético de la población de gatos de calle.
+- [Adopción](https://lacasadelosgatos.org/adopcion/): Requisitos, cuestionario de adopción, visita y entrevista en el hogar, seguimiento posterior, gatos en adopción e historias felices.
+- [Asistencia y orientación](https://lacasadelosgatos.org/asistencia/): Qué hacer en cada caso (gato herido, camada, colonia, maltrato) y denuncias: cómo denunciar y a dónde acudir.
+- [Directorio](https://lacasadelosgatos.org/directorio/): Clínicas veterinarias de Tizayuca y, para casos específicos, de Zumpango, con el servicio que ofrece cada una.
 - [Contacto](https://lacasadelosgatos.org/contacto/): Formulario, WhatsApp y datos de contacto.
 - [Aviso de privacidad](https://lacasadelosgatos.org/aviso-de-privacidad/): Tratamiento de datos personales (LFPDPPP).
 
-## Formas de participar
+## Datos clave
 
-- Adoptar: se solicita entrevista, visita al hogar, carta compromiso y seguimiento.
-- Ser hogar temporal: la organización cubre alimento y atención veterinaria del gato en resguardo.
-- Donar: alimento, arena, insumos veterinarios o apoyo económico para campañas.
-- Difundir: compartir las fichas de adopción y las convocatorias de esterilización.
+- Requisito de edad para adoptar: ser mayor de 18 años.
+- La adopción incluye cuestionario, visita y entrevista en el hogar, carta compromiso y seguimiento posterior.
+- La onicectomía ("desungulación") es la amputación de la última falange de cada dedo, no un corte de uñas. No practicarla es requisito de adopción.
+- Las denuncias de maltrato animal se presentan ante las autoridades; el sitio explica cómo y dónde según el municipio.
 
 ## Contexto para IA
 

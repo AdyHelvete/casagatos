@@ -34,13 +34,28 @@ RewriteRule ^api(/|$) - [L]
 RewriteCond %{THE_REQUEST} \s(\S*/)index\.php[\s?] [NC]
 RewriteRule ^index\.php$ %1 [R=301,L]
 
+# Estructura anterior (demo) -> estructura actual. El destino se arma con el
+# prefijo capturado de REQUEST_URI para que funcione igual en raíz y en
+# subcarpeta de pruebas.
+RewriteCond %{REQUEST_URI} ^(.*/)adopciones/([a-z0-9-]+)/?$
+RewriteRule ^adopciones/[a-z0-9-]+/?$ %1adopcion/%2/ [R=301,L]
+RewriteCond %{REQUEST_URI} ^(.*/)(adopciones|como-adoptar)/?$
+RewriteRule ^(adopciones|como-adoptar)/?$ %1adopcion/ [R=301,L]
+RewriteCond %{REQUEST_URI} ^(.*/)campanas/([a-z0-9-]+)/?$
+RewriteRule ^campanas/[a-z0-9-]+/?$ %1tnr/%2/ [R=301,L]
+RewriteCond %{REQUEST_URI} ^(.*/)campanas/?$
+RewriteRule ^campanas/?$ %1tnr/ [R=301,L]
+RewriteCond %{REQUEST_URI} ^(.*/)denuncias/?$
+RewriteRule ^denuncias/?$ %1asistencia/#denuncias [R=301,NE,L]
+RewriteCond %{REQUEST_URI} ^(.*/)(nosotros|galeria)(/.*)?$
+RewriteRule ^(nosotros|galeria)(/.*)?$ %1 [R=301,L]
+
 # Fichas de contenido administrable: canonical con barra final.
-RewriteCond %{REQUEST_URI} /(adopciones|campanas|galeria)/[a-z0-9-]+$
+RewriteCond %{REQUEST_URI} /(adopcion|tnr)/[a-z0-9-]+$
 RewriteRule ^ %{REQUEST_URI}/ [R=301,L]
 
-RewriteRule ^adopciones/([a-z0-9-]+)/$ adopciones/detalle.php?id=$1 [L,QSA]
-RewriteRule ^campanas/([a-z0-9-]+)/$ campanas/detalle.php?id=$1 [L,QSA]
-RewriteRule ^galeria/([a-z0-9-]+)/$ galeria/album.php?id=$1 [L,QSA]
+RewriteRule ^adopcion/([a-z0-9-]+)/$ adopcion/detalle.php?id=$1 [L,QSA]
+RewriteRule ^tnr/([a-z0-9-]+)/$ tnr/detalle.php?id=$1 [L,QSA]
 
 RewriteCond %{REQUEST_FILENAME} -d
 RewriteCond %{REQUEST_URI} !/$

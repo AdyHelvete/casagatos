@@ -4,8 +4,8 @@ declare(strict_types=1);
 require_once __DIR__ . '/SiteStorage.php';
 
 /**
- * CRUD genérico sobre colecciones JSON de contenido (adopciones, campañas y
- * álbumes de galería). Cada tipo declara su esquema de campos; el saneado y el
+ * CRUD genérico sobre colecciones JSON de contenido (fichas de adopción,
+ * jornadas, casos de orientación y clínicas del directorio). Cada tipo declara su esquema de campos; el saneado y el
  * guardado son comunes para que el panel use siempre las mismas rutinas.
  */
 class ContentCollection
@@ -18,9 +18,10 @@ class ContentCollection
         return [
             'adoptions' => [
                 'file' => 'adoptions.json',
-                'label' => 'Adopciones',
+                'label' => 'Adopción',
                 'singular' => 'ficha de adopción',
-                'baseUrl' => '/adopciones/',
+                'baseUrl' => '/adopcion/',
+                'detail' => true,
                 'text' => ['name', 'age', 'sex', 'size', 'temperament', 'summary', 'cover', 'ctaLabel', 'ctaUrl'],
                 'html' => ['story'],
                 'bool' => ['published', 'featured', 'sterilized', 'vaccinated'],
@@ -30,30 +31,45 @@ class ContentCollection
             ],
             'campaigns' => [
                 'file' => 'campaigns.json',
-                'label' => 'Campañas y eventos',
-                'singular' => 'campaña',
-                'baseUrl' => '/campanas/',
-                'text' => ['title', 'startDate', 'endDate', 'place', 'summary', 'cover', 'ctaLabel', 'ctaUrl'],
+                'label' => 'Jornadas',
+                'singular' => 'jornada',
+                'baseUrl' => '/tnr/',
+                'detail' => true,
+                'text' => ['title', 'startDate', 'endDate', 'schedule', 'place', 'cost', 'summary', 'cover', 'ctaLabel', 'ctaUrl'],
                 'html' => ['body'],
                 'bool' => ['published', 'featured'],
                 'list' => ['gallery'],
                 'enum' => [
-                    'kind' => ['campana', 'evento'],
+                    'kind' => ['esterilizacion', 'tnr', 'platica'],
                     'status' => ['activa', 'proxima', 'finalizada'],
                 ],
                 'titleField' => 'title',
             ],
-            'albums' => [
-                'file' => 'albums.json',
-                'label' => 'Galerías',
-                'singular' => 'álbum',
-                'baseUrl' => '/galeria/',
-                'text' => ['title', 'summary', 'cover'],
-                'html' => [],
-                'bool' => ['published', 'featured'],
-                'list' => ['gallery'],
+            'guides' => [
+                'file' => 'guides.json',
+                'label' => 'Orientación',
+                'singular' => 'caso de orientación',
+                'baseUrl' => '/asistencia/',
+                'detail' => false,
+                'text' => ['title', 'summary', 'ctaLabel', 'ctaUrl'],
+                'html' => ['body'],
+                'bool' => ['published', 'urgent'],
+                'list' => [],
                 'enum' => [],
                 'titleField' => 'title',
+            ],
+            'clinics' => [
+                'file' => 'clinics.json',
+                'label' => 'Directorio de clínicas',
+                'singular' => 'clínica',
+                'baseUrl' => '/directorio/',
+                'detail' => false,
+                'text' => ['name', 'summary', 'specialty', 'address', 'phone', 'whatsapp', 'hours', 'mapUrl'],
+                'html' => [],
+                'bool' => ['published', 'emergency'],
+                'list' => ['services'],
+                'enum' => ['zone' => ['tizayuca', 'zumpango']],
+                'titleField' => 'name',
             ],
         ];
     }
@@ -162,6 +178,12 @@ class ContentCollection
     public static function slugify(string $value): string
     {
         $value = trim($value);
+        // Los acentos del español se resuelven aquí: iconv los translitera
+        // distinto según el sistema ("í" => "'i" en macOS/BSD).
+        $value = strtr($value, [
+            'á' => 'a', 'é' => 'e', 'í' => 'i', 'ó' => 'o', 'ú' => 'u', 'ü' => 'u', 'ñ' => 'n',
+            'Á' => 'A', 'É' => 'E', 'Í' => 'I', 'Ó' => 'O', 'Ú' => 'U', 'Ü' => 'U', 'Ñ' => 'N',
+        ]);
         $transliterated = @iconv('UTF-8', 'ASCII//TRANSLIT', $value);
         if (is_string($transliterated) && $transliterated !== '') {
             $value = $transliterated;
@@ -303,24 +325,63 @@ class ContentCollection
         return $fallback;
     }
 
-    public static function statusLabel(string $type, array $item): string
+    /**
+     * Ruta pública de un elemento: su ficha propia o, en las colecciones que
+     * se pintan dentro de una sola página, el ancla dentro de esa página.
+     */
+    public static function itemPath(string $type, array $item): string
+    {
+        $schema = self::schema($type);
+        $id = (string) ($item['id'] ?? '');
+
+        return !empty($schema['detail'])
+            ? $schema['baseUrl'] . $id . '/'
+            : $schema['baseUrl'] . '#' . $id;
+    }
+
+    /**
+     * Etiquetas visibles de los campos de opción, por colección.
+     *
+     * @return array<string, string>
+     */
+    public static function optionLabels(string $type, string $field): array
     {
         $labels = [
             'adoptions' => [
-                'disponible' => 'En adopción',
-                'en-proceso' => 'En proceso',
-                'adoptado' => 'Adoptado',
+                'status' => [
+                    'disponible' => 'En adopción',
+                    'en-proceso' => 'En proceso',
+                    'adoptado' => 'Adoptado',
+                ],
             ],
             'campaigns' => [
-                'activa' => 'Activa',
-                'proxima' => 'Próxima',
-                'finalizada' => 'Finalizada',
+                'status' => [
+                    'activa' => 'Registro abierto',
+                    'proxima' => 'Próxima',
+                    'finalizada' => 'Finalizada',
+                ],
+                'kind' => [
+                    'esterilizacion' => 'Jornada de esterilización',
+                    'tnr' => 'Jornada TNR',
+                    'platica' => 'Plática o taller',
+                ],
+            ],
+            'clinics' => [
+                'zone' => [
+                    'tizayuca' => 'Tizayuca',
+                    'zumpango' => 'Zumpango',
+                ],
             ],
         ];
 
+        return $labels[$type][$field] ?? [];
+    }
+
+    public static function statusLabel(string $type, array $item): string
+    {
         $status = (string) ($item['status'] ?? '');
 
-        return $labels[$type][$status] ?? '';
+        return self::optionLabels($type, 'status')[$status] ?? '';
     }
 
     /**

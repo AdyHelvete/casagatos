@@ -26,9 +26,9 @@ class PageRegistry
                 'themeColor' => '#1a1612',
                 'geoRegion' => 'MX-HGO',
                 'geoPlacename' => 'Tizayuca',
-                'cssVersion' => 10,
-                'jsVersion' => 3,
-                'configJsVersion' => 3,
+                'cssVersion' => 11,
+                'jsVersion' => 4,
+                'configJsVersion' => 4,
                 'ctaLabel' => 'Contacto',
                 'ctaHref' => '/contacto/',
                 'basePath' => 'auto',
@@ -281,7 +281,7 @@ class PageRegistry
     }
 
     /**
-     * Convierte una ruta interna (/adopciones/) en URL pública, con subcarpeta
+     * Convierte una ruta interna (/adopcion/) en URL pública, con subcarpeta
      * si el sitio se está previsualizando fuera de la raíz.
      */
     public static function url(string $path): string
@@ -404,7 +404,7 @@ class PageRegistry
       </div>
     </div></section>
     <section class="section section--tight"><div class="container reveal"><div class="cta-band">
-      <div><h2>¿Quieres adoptar o apoyar?</h2><p>Escríbenos y te contamos el siguiente paso. Cada hogar cuenta.</p></div>
+      <div><h2>¿Necesitas orientación?</h2><p>Escríbenos y te contamos el siguiente paso.</p></div>
       <a class="btn" href="<?php echo tw_esc(tw_url('/contacto/')); ?>">Escríbenos</a>
     </div></div></section>
   </main>

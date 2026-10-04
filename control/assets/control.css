@@ -1717,3 +1717,112 @@ a.control-user:hover {
     transition-duration: 0.01ms !important;
   }
 }
+
+/* Textos de las páginas: selector de página, secciones plegables y bloques. */
+.control-pagepicker {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-bottom: var(--space-4);
+}
+
+.control-pagepicker__link {
+  border: 1px solid var(--control-line-strong);
+  border-radius: 999px;
+  color: var(--control-text);
+  font-size: 0.88rem;
+  font-weight: 600;
+  padding: 8px 16px;
+  text-decoration: none;
+}
+
+.control-pagepicker__link:hover {
+  border-color: var(--control-text);
+}
+
+.control-pagepicker__link.is-active {
+  background: var(--control-text);
+  border-color: var(--control-text);
+  color: var(--control-surface);
+}
+
+.control-section {
+  margin-bottom: var(--space-4);
+}
+
+.control-section__summary {
+  align-items: center;
+  cursor: pointer;
+  display: flex;
+  gap: var(--space-3);
+  justify-content: space-between;
+  list-style: none;
+}
+
+.control-section__summary::-webkit-details-marker {
+  display: none;
+}
+
+.control-section__title {
+  font-size: 1.02rem;
+  font-weight: 700;
+}
+
+.control-section__hint {
+  color: var(--control-muted);
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+
+.control-section[open] .control-section__hint {
+  visibility: hidden;
+}
+
+.control-section[open] .control-section__summary {
+  margin-bottom: var(--space-4);
+}
+
+.control-section__help {
+  margin-bottom: var(--space-4);
+}
+
+.control-section__reset {
+  margin-top: var(--space-4);
+  text-align: right;
+}
+
+.control-repeater {
+  border: 0;
+  display: grid;
+  gap: var(--space-3);
+  margin: 0;
+  padding: 0;
+}
+
+.control-repeater legend {
+  font-size: 0.88rem;
+  font-weight: 600;
+  margin-bottom: var(--space-2);
+  padding: 0;
+}
+
+.control-repeater__item {
+  border: 1px solid var(--control-line-strong);
+  border-radius: var(--control-radius-sm);
+  display: grid;
+  gap: var(--space-3);
+  padding: var(--space-4);
+}
+
+.control-repeater__item--new {
+  border-style: dashed;
+}
+
+.control-repeater__tag {
+  color: var(--control-muted);
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  margin: 0;
+  text-transform: uppercase;
+}

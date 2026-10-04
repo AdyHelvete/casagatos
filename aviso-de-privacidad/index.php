@@ -36,10 +36,10 @@ $phone = (string) ($config['contact']['phoneDisplay'] ?? '');
         <h2>3. Finalidades del tratamiento</h2>
         <p>Usamos tus datos para las siguientes finalidades primarias:</p>
         <ul>
-          <li>Atender y dar seguimiento a solicitudes de adopción, incluida la entrevista y la visita de seguimiento.</li>
-          <li>Coordinar postulaciones a hogar temporal y voluntariado.</li>
-          <li>Gestionar donativos y apoyos en especie.</li>
-          <li>Informar sobre campañas de esterilización, vacunación y eventos.</li>
+          <li>Atender y dar seguimiento a solicitudes de adopción, incluidos el cuestionario de adopción, la visita y entrevista en el hogar y el seguimiento posterior.</li>
+          <li>Registrar tu participación en jornadas de esterilización y TNR.</li>
+          <li>Orientarte sobre un caso de rescate o una denuncia de maltrato animal.</li>
+          <li>Recibir sugerencias y correcciones para el directorio de clínicas veterinarias.</li>
           <li>Responder dudas y mantener comunicación contigo sobre tu solicitud.</li>
         </ul>
         <p>Como finalidad secundaria podemos enviarte avisos ocasionales sobre campañas. Puedes negarte en cualquier momento escribiéndonos al correo indicado, sin que ello afecte tu solicitud principal.</p>

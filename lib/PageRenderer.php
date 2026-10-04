@@ -300,12 +300,10 @@ class PageRenderer
         if ($items === []) {
             $items = [
                 ['id' => 'home', 'label' => 'Inicio', 'href' => PageRegistry::url('/'), 'style' => 'link', 'order' => 10],
-                ['id' => 'nosotros', 'label' => 'Nosotros', 'href' => PageRegistry::url('/nosotros/'), 'style' => 'link', 'order' => 20],
-                ['id' => 'adopciones', 'label' => 'Adopciones', 'href' => PageRegistry::url('/adopciones/'), 'style' => 'link', 'order' => 30],
-                ['id' => 'como-adoptar', 'label' => 'Cómo adoptar', 'href' => PageRegistry::url('/como-adoptar/'), 'style' => 'link', 'order' => 40],
-                ['id' => 'campanas', 'label' => 'Campañas', 'href' => PageRegistry::url('/campanas/'), 'style' => 'link', 'order' => 50],
-                ['id' => 'galeria', 'label' => 'Galería', 'href' => PageRegistry::url('/galeria/'), 'style' => 'link', 'order' => 60],
-                ['id' => 'contacto', 'label' => (string) (self::settings()['ctaLabel'] ?? 'Contacto'), 'href' => PageRegistry::url((string) (self::settings()['ctaHref'] ?? '/contacto/')), 'style' => 'cta', 'order' => 90],
+                ['id' => 'tnr', 'label' => 'TNR', 'href' => PageRegistry::url('/tnr/'), 'style' => 'link', 'order' => 20],
+                ['id' => 'adopcion', 'label' => 'Adopción', 'href' => PageRegistry::url('/adopcion/'), 'style' => 'link', 'order' => 30],
+                ['id' => 'asistencia', 'label' => 'Asistencia y orientación', 'href' => PageRegistry::url('/asistencia/'), 'style' => 'link', 'order' => 40],
+                ['id' => 'directorio', 'label' => 'Directorio', 'href' => PageRegistry::url('/directorio/'), 'style' => 'link', 'order' => 50],
             ];
         }
 
@@ -362,10 +360,19 @@ class PageRenderer
         $logo = PageRegistry::url((string) ($logos['primary'] ?? '/assets/logo/casa_gatos_logo.jpg'));
         $logoVersion = (int) ($logos['version'] ?? 5);
 
+        $home = PageRegistry::url('/');
         $explore = array_values(array_filter(
             self::navigationItems(),
-            static fn(array $i): bool => $i['style'] !== 'cta' && $i['href'] !== '/'
+            static fn(array $i): bool => $i['style'] !== 'cta' && $i['href'] !== $home
         ));
+
+        // Contacto no es una pestaña del menú, pero siempre queda a un clic.
+        $contactHref = PageRegistry::url('/contacto/');
+        $contactPage = PageRegistry::find('contacto');
+        $contactListed = array_filter($explore, static fn(array $i): bool => $i['href'] === $contactHref) !== [];
+        if (!$contactListed && ($contactPage['status'] ?? '') === 'published') {
+            $explore[] = ['id' => 'contacto', 'label' => 'Contacto', 'href' => $contactHref, 'style' => 'link', 'order' => 90];
+        }
 
         $privacyLabel = (string) ($footer['privacyLabel'] ?? 'Aviso de privacidad');
         $phone = (string) ($contact['phone'] ?? '');
@@ -470,7 +477,7 @@ class PageRenderer
         echo '    </section>' . "\n";
 
         echo '    <section class="section section--tight"><div class="container reveal"><div class="cta-band">' . "\n";
-        echo '      <div><h2>¿Buscabas ayuda con tu proyecto?</h2><p>Cuéntanos qué necesitas y te orientamos con la mejor opción para tu negocio.</p></div>' . "\n";
+        echo '      <div><h2>¿Buscabas ayuda con un caso?</h2><p>Cuéntanos qué necesitas y te orientamos sobre el siguiente paso.</p></div>' . "\n";
         echo '      <a class="btn" href="' . self::esc($ctaHref) . '">' . self::esc($ctaLabel) . '</a>' . "\n";
         echo '    </div></div></section>' . "\n";
         echo '  </main>' . "\n";

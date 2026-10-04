@@ -40,13 +40,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta name="csrf-token" content="<?php echo h(ControlAuth::csrfToken()); ?>">
     <title>Acceder · Control · La Casa de los Gatos</title>
     <link rel="icon" href="<?php echo h(cu('/assets/logo/casa_gatos_logo.jpg')); ?>?v=1" type="image/png">
-    <link rel="stylesheet" href="<?php echo h(cu('/control/assets/control.css')); ?>?v=10">
+    <link rel="stylesheet" href="<?php echo h(cu('/control/assets/control.css')); ?>?v=11">
 </head>
 <body class="control-login">
     <main class="control-login__card">
         <img src="<?php echo h(cu('/assets/logo/casa_gatos_logo.jpg')); ?>?v=1" alt="La Casa de los Gatos" width="180" height="48">
         <h1>Panel de control</h1>
-        <p>Administra adopciones, campañas, galerías, contacto, redes sociales y mensajes recibidos.</p>
+        <p>Administra los textos del sitio, las jornadas TNR, las adopciones, la orientación, el directorio de clínicas y los mensajes recibidos.</p>
 
         <?php if ($error): ?>
             <div class="control-alert control-alert--error"><?php echo h($error); ?></div>

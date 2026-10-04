@@ -81,7 +81,7 @@ controlHeader('Formularios', 'forms');
 
     <?php controlTabPanelStart('forms', 'services', $activeTab === 'services'); ?>
     <p class="control-tabs__intro">
-        Un servicio por línea. Es la lista del desplegable en <strong>/contacto/</strong> y la única que el servidor acepta.
+        Un motivo por línea. Es la lista del desplegable en <strong>/contacto/</strong> y la única que el servidor acepta. El cuestionario de <strong>/adopcion/</strong> usa su propio motivo fijo ("Cuestionario de adopción") y sus preguntas se editan en Textos de las páginas → Adopción.
         <?php if ($contactPage !== null): ?>
             <a href="<?php echo h(PageRegistry::pageUrl($contactPage)); ?>" target="_blank" rel="noopener">Ver formulario</a>.
         <?php endif; ?>

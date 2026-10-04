@@ -11,11 +11,10 @@ if ($item === null || empty($item['published'])) {
 $title = (string) $item['title'];
 $status = (string) ($item['status'] ?? '');
 $statusLabel = ContentCollection::statusLabel('campaigns', $item);
-$kind = ($item['kind'] ?? '') === 'evento' ? 'Evento' : 'Campaña';
-$coverPath = ContentCollection::coverOf($item, '/assets/images/portada.jpg');
+$kind = ContentCollection::optionLabels('campaigns', 'kind')[(string) ($item['kind'] ?? '')] ?? 'Jornada';
+$coverPath = ContentCollection::coverOf($item, '/assets/images/campana-esterilizacion.jpg');
 $cover = tw_url($coverPath);
 $when = tw_date_range((string) ($item['startDate'] ?? ''), (string) ($item['endDate'] ?? ''));
-$place = trim((string) ($item['place'] ?? ''));
 $gallery = array_values(array_filter(
     is_array($item['gallery'] ?? null) ? $item['gallery'] : [],
     static fn($image): bool => trim((string) $image) !== '' && $image !== $coverPath
@@ -25,28 +24,31 @@ $facts = array_filter([
     'Tipo' => $kind,
     'Estado' => $statusLabel,
     'Fecha' => $when,
-    'Lugar' => $place,
+    'Horario' => trim((string) ($item['schedule'] ?? '')),
+    'Lugar' => trim((string) ($item['place'] ?? '')),
+    'Costo' => trim((string) ($item['cost'] ?? '')),
 ], static fn(string $value): bool => trim($value) !== '');
 
 $ctaLabel = trim((string) ($item['ctaLabel'] ?? ''));
 $ctaUrl = tw_url(trim((string) ($item['ctaUrl'] ?? '')));
-$whatsapp = tw_whatsapp_url('Hola La Casa de los Gatos, quiero información sobre: ' . $title);
+$whatsapp = tw_whatsapp_url('Hola La Casa de los Gatos, quiero registrarme o pedir información sobre: ' . $title);
 $open = $status !== 'finalizada';
 
 $overrides = [
     'title' => $title . ' | La Casa de los Gatos',
     'description' => (string) $item['summary'],
-    'canonical' => '/campanas/' . $item['id'] . '/',
+    'canonical' => '/tnr/' . $item['id'] . '/',
     'ogTitle' => $title,
     'ogDescription' => (string) $item['summary'],
-    'ogImage' => $cover,
+    'ogImage' => $coverPath,
     'ogType' => 'article',
+    'jsonLd' => '',
 ];
 ?>
-<?php tw_page_start('campanas', $overrides); ?>
+<?php tw_page_start('tnr', $overrides); ?>
   <main id="contenido">
     <section class="page-hero page-hero--plain"><div class="container">
-      <p class="breadcrumbs"><a href="<?php echo tw_esc(tw_url('/')); ?>">Inicio</a> / <a href="<?php echo tw_esc(tw_url('/campanas/')); ?>">Campañas</a> / <?php echo tw_esc($title); ?></p>
+      <p class="breadcrumbs"><a href="<?php echo tw_esc(tw_url('/')); ?>">Inicio</a> / <a href="<?php echo tw_esc(tw_url('/tnr/')); ?>">TNR</a> / <?php echo tw_esc($title); ?></p>
       <?php if ($statusLabel !== ''): ?>
         <span class="badge <?php echo tw_esc(tw_badge_class($status)); ?>"><?php echo tw_esc($statusLabel); ?></span>
       <?php endif; ?>
@@ -90,12 +92,13 @@ $overrides = [
                 <a class="btn" href="<?php echo tw_esc($ctaUrl); ?>"><?php echo tw_esc($ctaLabel); ?></a>
               <?php endif; ?>
               <?php if ($whatsapp !== ''): ?>
-                <a class="btn btn--outline" href="<?php echo tw_esc($whatsapp); ?>" target="_blank" rel="noopener" data-track-button="campana-whatsapp">Preguntar por WhatsApp</a>
+                <a class="btn btn--outline" href="<?php echo tw_esc($whatsapp); ?>" target="_blank" rel="noopener" data-track-button="jornada-whatsapp">Registrarme por WhatsApp</a>
               <?php endif; ?>
             </div>
+            <p style="font-size:.86rem">Antes de la cirugía revisa <a href="<?php echo tw_esc(tw_url('/tnr/')); ?>#esterilizacion" style="color:var(--blue);font-weight:600">cómo preparar a tu gato</a>.</p>
           <?php else: ?>
-            <p>Esta campaña ya concluyó. Consulta las convocatorias abiertas.</p>
-            <a class="btn" href="<?php echo tw_esc(tw_url('/campanas/')); ?>">Ver campañas activas</a>
+            <p>Esta jornada ya concluyó. Consulta las convocatorias abiertas.</p>
+            <a class="btn" href="<?php echo tw_esc(tw_url('/tnr/')); ?>#jornadas">Ver jornadas disponibles</a>
           <?php endif; ?>
         </aside>
       </div>

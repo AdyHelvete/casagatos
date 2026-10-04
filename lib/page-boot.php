@@ -10,6 +10,7 @@ require_once __DIR__ . '/SiteStorage.php';
 require_once __DIR__ . '/PageRegistry.php';
 require_once __DIR__ . '/PageRenderer.php';
 require_once __DIR__ . '/ContentCollection.php';
+require_once __DIR__ . '/PageContent.php';
 
 if (!function_exists('tw_page_start')) {
     function tw_page_start(string $pageId, array $overrides = []): void
@@ -50,6 +51,63 @@ if (!function_exists('tw_url')) {
     function tw_url(string $path): string
     {
         return PageRegistry::url($path);
+    }
+}
+
+if (!function_exists('tw_content')) {
+    /**
+     * Textos editables de una página (Control · Textos de las páginas).
+     */
+    function tw_content(string $page): array
+    {
+        return PageContent::get($page);
+    }
+}
+
+if (!function_exists('tw_page_hero')) {
+    /**
+     * Encabezado estándar de las páginas interiores.
+     *
+     * @param array<string, mixed> $hero eyebrow, title, accent, lead
+     */
+    function tw_page_hero(string $crumb, array $hero): void
+    {
+        $accent = trim((string) ($hero['accent'] ?? ''));
+
+        echo '<section class="page-hero page-hero--plain"><div class="container">';
+        echo '<p class="breadcrumbs"><a href="' . tw_esc(tw_url('/')) . '">Inicio</a> / ' . tw_esc($crumb) . '</p>';
+        if (trim((string) ($hero['eyebrow'] ?? '')) !== '') {
+            echo '<span class="eyebrow eyebrow--lime">' . tw_esc((string) $hero['eyebrow']) . '</span>';
+        }
+        echo '<h1>' . tw_esc((string) ($hero['title'] ?? ''));
+        if ($accent !== '') {
+            echo ' <span class="accent">' . tw_esc($accent) . '</span>';
+        }
+        echo '</h1>';
+        if (trim((string) ($hero['lead'] ?? '')) !== '') {
+            echo '<p>' . tw_esc((string) $hero['lead']) . '</p>';
+        }
+        echo '</div></section>';
+    }
+}
+
+if (!function_exists('tw_heading')) {
+    /**
+     * Título de sección a partir de los campos eyebrow, title e intro.
+     *
+     * @param array<string, mixed> $section
+     */
+    function tw_heading(array $section, bool $lime = false): void
+    {
+        echo '<div class="section-heading reveal"><div>';
+        if (trim((string) ($section['eyebrow'] ?? '')) !== '') {
+            echo '<span class="eyebrow' . ($lime ? ' eyebrow--lime' : '') . '">' . tw_esc((string) $section['eyebrow']) . '</span>';
+        }
+        echo '<h2>' . tw_esc((string) ($section['title'] ?? '')) . '</h2></div>';
+        if (trim((string) ($section['intro'] ?? '')) !== '') {
+            echo '<p>' . tw_esc((string) $section['intro']) . '</p>';
+        }
+        echo '</div>';
     }
 }
 
@@ -155,7 +213,7 @@ if (!function_exists('tw_adoption_card')) {
         ]));
 
         echo '<article class="content-card' . ($status === 'adoptado' ? ' content-card--adopted' : '') . '">';
-        echo '<a class="content-card__media" href="' . tw_esc(tw_url('/adopciones/' . $id . '/')) . '">';
+        echo '<a class="content-card__media" href="' . tw_esc(tw_url('/adopcion/' . $id . '/')) . '">';
         if ($label !== '') {
             echo '<span class="badge badge--floating ' . tw_badge_class($status) . '">' . tw_esc($label) . '</span>';
         }
@@ -171,7 +229,7 @@ if (!function_exists('tw_adoption_card')) {
             echo '</p>';
         }
         echo '<p>' . tw_esc((string) $item['summary']) . '</p>';
-        echo '<a class="content-card__link" href="' . tw_esc(tw_url('/adopciones/' . $id . '/')) . '">Ver ficha</a>';
+        echo '<a class="content-card__link" href="' . tw_esc(tw_url('/adopcion/' . $id . '/')) . '">Ver ficha</a>';
         echo '</div></article>';
     }
 }
@@ -179,52 +237,114 @@ if (!function_exists('tw_adoption_card')) {
 if (!function_exists('tw_campaign_card')) {
     function tw_campaign_card(array $item): void
     {
-        $id = tw_esc((string) $item['id']);
+        $href = tw_esc(tw_url(ContentCollection::itemPath('campaigns', $item)));
         $status = (string) ($item['status'] ?? '');
         $label = ContentCollection::statusLabel('campaigns', $item);
-        $cover = tw_url(ContentCollection::coverOf($item, '/assets/images/portada.jpg'));
+        $cover = tw_url(ContentCollection::coverOf($item, '/assets/images/campana-esterilizacion.jpg'));
         $when = tw_date_range((string) ($item['startDate'] ?? ''), (string) ($item['endDate'] ?? ''));
-        $kind = ($item['kind'] ?? '') === 'evento' ? 'Evento' : 'Campaña';
+        $kind = ContentCollection::optionLabels('campaigns', 'kind')[(string) ($item['kind'] ?? '')] ?? 'Jornada';
+        $place = trim((string) ($item['place'] ?? ''));
 
         echo '<article class="content-card">';
-        echo '<a class="content-card__media" href="' . tw_esc(tw_url('/campanas/' . $id . '/')) . '">';
+        echo '<a class="content-card__media" href="' . $href . '">';
         if ($label !== '') {
             echo '<span class="badge badge--floating ' . tw_badge_class($status) . '">' . tw_esc($label) . '</span>';
         }
         echo '<img src="' . tw_esc($cover) . '" alt="' . tw_esc((string) $item['title']) . '" loading="lazy" width="600" height="450">';
         echo '</a>';
         echo '<div class="content-card__body">';
-        echo '<p class="content-card__meta"><span>' . $kind . '</span>';
+        echo '<p class="content-card__meta"><span>' . tw_esc($kind) . '</span>';
         if ($when !== '') {
             echo '<span>' . tw_esc($when) . '</span>';
+        }
+        if ($place !== '') {
+            echo '<span>' . tw_esc($place) . '</span>';
         }
         echo '</p>';
         echo '<h3>' . tw_esc((string) $item['title']) . '</h3>';
         echo '<p>' . tw_esc((string) $item['summary']) . '</p>';
-        echo '<a class="content-card__link" href="' . tw_esc(tw_url('/campanas/' . $id . '/')) . '">Ver detalle</a>';
+        echo '<a class="content-card__link" href="' . $href . '">Ver detalle</a>';
         echo '</div></article>';
     }
 }
 
-if (!function_exists('tw_album_card')) {
-    function tw_album_card(array $item): void
+if (!function_exists('tw_story_card')) {
+    /**
+     * Historia feliz: una ficha de adopción con estado "Adoptado".
+     */
+    function tw_story_card(array $item): void
     {
-        $id = tw_esc((string) $item['id']);
+        $href = tw_esc(tw_url(ContentCollection::itemPath('adoptions', $item)));
         $cover = tw_url(ContentCollection::coverOf($item, '/assets/images/portada.jpg'));
-        $count = count(is_array($item['gallery'] ?? null) ? $item['gallery'] : []);
 
         echo '<article class="content-card">';
-        echo '<a class="content-card__media" href="' . tw_esc(tw_url('/galeria/' . $id . '/')) . '">';
-        echo '<img src="' . tw_esc($cover) . '" alt="' . tw_esc((string) $item['title']) . '" loading="lazy" width="600" height="450">';
-        if ($count > 0) {
-            echo '<span class="album-count">' . $count . ' foto' . ($count === 1 ? '' : 's') . '</span>';
-        }
+        echo '<a class="content-card__media" href="' . $href . '">';
+        echo '<span class="badge badge--floating badge--adopted">Adoptado</span>';
+        echo '<img src="' . tw_esc($cover) . '" alt="' . tw_esc((string) $item['name']) . ' con su familia" loading="lazy" width="600" height="450">';
         echo '</a>';
         echo '<div class="content-card__body">';
-        echo '<h3>' . tw_esc((string) $item['title']) . '</h3>';
+        echo '<h3>' . tw_esc((string) $item['name']) . '</h3>';
         echo '<p>' . tw_esc((string) $item['summary']) . '</p>';
-        echo '<a class="content-card__link" href="' . tw_esc(tw_url('/galeria/' . $id . '/')) . '">Abrir álbum</a>';
+        echo '<a class="content-card__link" href="' . $href . '">Leer su historia</a>';
         echo '</div></article>';
+    }
+}
+
+if (!function_exists('tw_clinic_card')) {
+    function tw_clinic_card(array $item): void
+    {
+        $name = (string) $item['name'];
+        $services = is_array($item['services'] ?? null) ? $item['services'] : [];
+        $phone = trim((string) ($item['phone'] ?? ''));
+        $whatsapp = preg_replace('/\D+/', '', (string) ($item['whatsapp'] ?? '')) ?? '';
+        $mapUrl = trim((string) ($item['mapUrl'] ?? ''));
+        $specialty = trim((string) ($item['specialty'] ?? ''));
+
+        echo '<article class="clinic-card" id="' . tw_esc((string) $item['id']) . '">';
+        echo '<header class="clinic-card__head"><h3>' . tw_esc($name) . '</h3>';
+        if (!empty($item['emergency'])) {
+            echo '<span class="badge badge--process">Urgencias</span>';
+        }
+        echo '</header>';
+
+        if (trim((string) ($item['summary'] ?? '')) !== '') {
+            echo '<p>' . tw_esc((string) $item['summary']) . '</p>';
+        }
+        if ($specialty !== '') {
+            echo '<p class="clinic-card__specialty"><strong>Acude aquí para:</strong> ' . tw_esc($specialty) . '</p>';
+        }
+        if ($services !== []) {
+            echo '<ul class="tag-list" aria-label="Servicios">';
+            foreach ($services as $service) {
+                echo '<li>' . tw_esc((string) $service) . '</li>';
+            }
+            echo '</ul>';
+        }
+
+        echo '<dl class="clinic-card__facts">';
+        foreach (['Dirección' => 'address', 'Horario' => 'hours'] as $label => $field) {
+            $value = trim((string) ($item[$field] ?? ''));
+            if ($value !== '') {
+                echo '<div><dt>' . $label . '</dt><dd>' . tw_esc($value) . '</dd></div>';
+            }
+        }
+        if ($phone !== '') {
+            echo '<div><dt>Teléfono</dt><dd><a href="tel:' . tw_esc(preg_replace('/[^\d+]/', '', $phone) ?? '') . '">' . tw_esc($phone) . '</a></dd></div>';
+        }
+        echo '</dl>';
+
+        if ($whatsapp !== '' || $mapUrl !== '') {
+            echo '<div class="button-row">';
+            if ($whatsapp !== '') {
+                echo '<a class="btn btn--sm" href="https://wa.me/' . tw_esc($whatsapp) . '" target="_blank" rel="noopener" data-track-button="directorio-whatsapp">WhatsApp</a>';
+            }
+            if ($mapUrl !== '' && preg_match('~^https?://~i', $mapUrl) === 1) {
+                echo '<a class="btn btn--sm btn--outline" href="' . tw_esc($mapUrl) . '" target="_blank" rel="noopener" data-track-button="directorio-mapa">Cómo llegar</a>';
+            }
+            echo '</div>';
+        }
+
+        echo '</article>';
     }
 }
 

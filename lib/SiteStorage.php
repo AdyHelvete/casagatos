@@ -62,8 +62,8 @@ class SiteStorage
             ],
             'whatsapp' => [
                 'phone' => '527791234567',
-                'defaultMessage' => 'Hola La Casa de los Gatos, me interesa conocer más sobre adopción o cómo apoyar.',
-                'floatLabel' => '¿Quieres adoptar o ayudar?',
+                'defaultMessage' => 'Hola La Casa de los Gatos, necesito orientación sobre adopción, esterilización o un caso.',
+                'floatLabel' => '¿Necesitas orientación?',
             ],
             'social' => [
                 'facebook' => 'https://www.facebook.com/mx.lacasadelosgatos',
@@ -71,18 +71,19 @@ class SiteStorage
                 'tiktok' => 'https://www.tiktok.com/@lacasadelosgatos',
             ],
             'footer' => [
-                'tagline' => 'Rescate, asistencia y adopción responsable en Tizayuca y la zona. #AdoptaNoCompres',
-                'geoText' => 'es una iniciativa de rescate y adopción responsable de gatos en Tizayuca, Hidalgo, con alcance en Tecámac, Zumpango y municipios cercanos. Realizamos campañas de esterilización, vacunación y eventos de apoyo.',
+                'tagline' => 'TNR, adopción responsable y orientación en Tizayuca y la zona. #AdoptaNoCompres',
+                'geoText' => 'es un proyecto vecinal de Tizayuca, Hidalgo, dedicado al control ético de gatos de calle (TNR), la adopción responsable, la orientación para rescates y denuncias, y un directorio de clínicas veterinarias de Tizayuca y Zumpango.',
                 'privacyLabel' => 'Aviso de privacidad',
                 'bottomNote' => 'Adopta, no compres.',
             ],
             'forms' => [
                 'contact' => [
                     'services' => [
-                        'Quiero adoptar',
-                        'Quiero ser hogar temporal',
-                        'Quiero donar o apoyar una campaña',
-                        'Información sobre eventos',
+                        'Registro a una jornada de esterilización o TNR',
+                        'Orientación sobre un caso',
+                        'Denuncia de maltrato',
+                        'Dudas sobre adopción',
+                        'Sugerir una clínica para el directorio',
                         'Otro',
                     ],
                     'minSeconds' => 3,
@@ -137,7 +138,15 @@ class SiteStorage
     public static function getSiteConfig(): array
     {
         $config = self::read('site-config.json', self::defaultSiteConfig());
-        return array_replace_recursive(self::defaultSiteConfig(), $config);
+        $merged = array_replace_recursive(self::defaultSiteConfig(), $config);
+
+        // La lista de motivos se toma tal cual: fusionada por índice, una lista
+        // guardada más corta que la de fábrica recuperaría los motivos borrados.
+        if (is_array($config['forms']['contact']['services'] ?? null)) {
+            $merged['forms']['contact']['services'] = array_values($config['forms']['contact']['services']);
+        }
+
+        return $merged;
     }
 
     /**

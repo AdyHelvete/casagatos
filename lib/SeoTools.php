@@ -2,6 +2,7 @@
 declare(strict_types=1);
 
 require_once __DIR__ . '/PageRegistry.php';
+require_once __DIR__ . '/ContentCollection.php';
 
 /**
  * Genera sitemap.xml a partir del registro de páginas y ofrece utilidades para
@@ -54,6 +55,24 @@ class SeoTools
                 'changefreq' => (string) ($page['sitemap']['changefreq'] ?? 'monthly'),
                 'priority' => (string) ($page['sitemap']['priority'] ?? '0.6'),
             ];
+        }
+
+        // Fichas con URL propia (gatos en adopción y jornadas), siempre que su
+        // página contenedora esté publicada.
+        foreach (['adoptions' => 'adopcion', 'campaigns' => 'tnr'] as $type => $parentId) {
+            $parent = PageRegistry::find($parentId);
+            if ($parent === null || ($parent['status'] ?? '') !== 'published') {
+                continue;
+            }
+
+            foreach (ContentCollection::published($type) as $item) {
+                $entries[] = [
+                    'loc' => $base . ContentCollection::itemPath($type, $item),
+                    'lastmod' => substr((string) ($item['updatedAt'] ?? ''), 0, 10),
+                    'changefreq' => 'monthly',
+                    'priority' => '0.5',
+                ];
+            }
         }
 
         return $entries;

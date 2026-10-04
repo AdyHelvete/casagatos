@@ -9,6 +9,7 @@ require_once dirname(__DIR__) . '/lib/MediaGallery.php';
 require_once dirname(__DIR__) . '/lib/PageRegistry.php';
 require_once dirname(__DIR__) . '/lib/PageImporter.php';
 require_once dirname(__DIR__) . '/lib/ContentCollection.php';
+require_once dirname(__DIR__) . '/lib/PageContent.php';
 require_once dirname(__DIR__) . '/lib/SeoTools.php';
 require_once dirname(__DIR__) . '/lib/CodeEditor.php';
 
@@ -124,12 +125,14 @@ function controlPageGuides(): array
         'pages' => 'Crea secciones, decide qué aparece en el menú y publícalas. El orden numérico más bajo sale primero.',
         'seo' => 'Títulos, descripciones y sitemap para Google. Elige una página a la izquierda y guarda por pestaña.',
         'code' => 'Edita el HTML, CSS o textos públicos. Cada guardado crea un respaldo. No toca carpetas del sistema.',
-        'adoptions' => 'Fichas de gatos en adopción que se muestran en /adopciones/. Cambia el estado a Adoptado cuando encuentren hogar.',
-        'campaigns' => 'Campañas de esterilización, vacunación y eventos. Publica, marca destacados y define fechas.',
-        'albums' => 'Álbumes de fotos que aparecen en /galeria/. Cada álbum tiene su portada y su lista de imágenes.',
+        'content' => 'Textos de cada pestaña del sitio. Elige la página, edita la sección que necesites y guarda: el cambio se ve de inmediato en el sitio.',
+        'adoptions' => 'Fichas de gatos que se muestran en /adopcion/. Al cambiar el estado a Adoptado, la ficha pasa a "Historias felices".',
+        'campaigns' => 'Jornadas de esterilización y TNR que se muestran en /tnr/. Las finalizadas pasan al historial.',
+        'guides' => 'Casos de "Qué hacer en cada caso" de /asistencia/. Cada caso se abre como un acordeón con sus pasos.',
+        'clinics' => 'Clínicas veterinarias de /directorio/, separadas por zona (Tizayuca y Zumpango) con los servicios de cada una.',
         'gallery' => 'Biblioteca de imágenes para el sitio. Arrastra archivos o elige desde el disco (JPG, PNG, WebP, GIF).',
         'forms' => 'Motivos de contacto del formulario y límites anti-spam. Lo que no esté en la lista no se acepta.',
-        'contacts' => 'Solicitudes enviadas desde /contacto/. Puedes editar, exportar o eliminar registros.',
+        'contacts' => 'Mensajes de /contacto/ y cuestionarios de adopción de /adopcion/. Puedes editar, exportar o eliminar registros.',
         'settings' => 'Marca visible: logos, teléfono, WhatsApp, redes y textos del pie. Los cambios se ven en todo el sitio.',
         'security' => 'Auditoría, eventos, política CSP y rotación de secretos. Revisa avisos en rojo antes de enforce.',
         'account' => 'Tu usuario y contraseña del panel.',
@@ -145,7 +148,9 @@ function controlNavIcon(string $key): string
         'code' => '<svg viewBox="0 0 20 20" aria-hidden="true"><path fill="currentColor" d="M7.4 4.2 2.6 10l4.8 5.8 1.2-1-4-4.8 4-4.8-1.2-1zm5.2 0-1.2 1 4 4.8-4 4.8 1.2 1 4.8-5.8-4.8-5.8z"/></svg>',
         'adoptions' => '<svg viewBox="0 0 20 20" aria-hidden="true"><path fill="currentColor" d="M10 17.5 3.6 11.6a3.9 3.9 0 0 1 5.5-5.5l.9.9.9-.9a3.9 3.9 0 0 1 5.5 5.5L10 17.5z"/></svg>',
         'campaigns' => '<svg viewBox="0 0 20 20" aria-hidden="true"><path fill="currentColor" d="M6 2h8a1 1 0 0 1 1 1v1h2v2h-2v10a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6H3V4h2V3a1 1 0 0 1 1-1zm1 6v7h2V8H7zm4 0v7h2V8h-2z"/></svg>',
-        'albums' => '<svg viewBox="0 0 20 20" aria-hidden="true"><path fill="currentColor" d="M2 5h11v10H2V5zm2 2v6h7V7H4zm11-3h3v12h-3V4z"/></svg>',
+        'content' => '<svg viewBox="0 0 20 20" aria-hidden="true"><path fill="currentColor" d="M3 4h14v2H3V4zm0 4h14v2H3V8zm0 4h9v2H3v-2zm11.5 0 1.5 1.5-3.5 3.5H11v-1.5l3.5-3.5z"/></svg>',
+        'guides' => '<svg viewBox="0 0 20 20" aria-hidden="true"><path fill="currentColor" d="M10 2a8 8 0 1 0 0 16 8 8 0 0 0 0-16zm-.9 12.5v-1.8h1.8v1.8H9.1zm2.6-5.1c-.6.5-.8.8-.8 1.6H9.1c0-1.4.5-2 1.200-2.600.5-.4.8-.7.8-1.300 0-.6-.5-1-1.100-1-.7 0-1.200.4-1.300 1.200H6.900C7 5.700 8.300 4.600 10 4.600c1.700 0 2.900 1 2.900 2.500 0 1.100-.6 1.700-1.200 2.300z"/></svg>',
+        'clinics' => '<svg viewBox="0 0 20 20" aria-hidden="true"><path fill="currentColor" d="M3 3h14v14H3V3zm6 3v3H6v2h3v3h2v-3h3V9h-3V6H9z"/></svg>',
         'gallery' => '<svg viewBox="0 0 20 20" aria-hidden="true"><path fill="currentColor" d="M3 4h14v12H3V4zm2 2v8h10V6H5zm2 6 2-2.5 1.5 2L13 8.5 15 12H7z"/></svg>',
         'forms' => '<svg viewBox="0 0 20 20" aria-hidden="true"><path fill="currentColor" d="M5 2h10a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1zm2 4h6v1.5H7V6zm0 3h6v1.5H7V9zm0 3h4v1.5H7V12z"/></svg>',
         'contacts' => '<svg viewBox="0 0 20 20" aria-hidden="true"><path fill="currentColor" d="M3 4h14v2H3V4zm0 4h14v9H3V8zm2 2v2h10v-2H5z"/></svg>',
@@ -168,12 +173,14 @@ function controlNav(string $active = ''): string
             'code' => ['Código', '/control/code.php', 'Editar plantillas, CSS y textos con respaldo.'],
         ],
         'Contenido' => [
-            'adoptions' => ['Adopciones', '/control/adoptions.php', 'Fichas de gatos disponibles y adoptados.'],
-            'campaigns' => ['Campañas y eventos', '/control/campaigns.php', 'Esterilización, vacunación, jornadas y eventos.'],
-            'albums' => ['Galerías', '/control/albums.php', 'Álbumes de fotos publicados en /galeria/.'],
+            'content' => ['Textos de las páginas', '/control/content.php', 'Títulos, textos y listas de cada pestaña del sitio.'],
+            'campaigns' => ['TNR · Jornadas', '/control/jornadas.php', 'Jornadas de esterilización y TNR.'],
+            'adoptions' => ['Adopción · Gatos e historias', '/control/adoptions.php', 'Fichas de gatos en adopción e historias felices.'],
+            'guides' => ['Orientación · Casos', '/control/guides.php', 'Qué hacer en cada caso (Asistencia y orientación).'],
+            'clinics' => ['Directorio · Clínicas', '/control/clinics.php', 'Clínicas veterinarias de Tizayuca y Zumpango.'],
             'gallery' => ['Biblioteca de imágenes', '/control/gallery.php', 'Sube y organiza imágenes del sitio.'],
             'forms' => ['Formularios', '/control/forms.php', 'Motivos de contacto y reglas anti-spam.'],
-            'contacts' => ['Contactos', '/control/contacts.php', 'Mensajes recibidos desde el formulario.'],
+            'contacts' => ['Contactos y cuestionarios', '/control/contacts.php', 'Mensajes y cuestionarios de adopción recibidos.'],
         ],
         'Sistema' => [
             'settings' => ['Configuración', '/control/settings.php', 'Logos, WhatsApp, redes y pie de página.'],
@@ -213,7 +220,7 @@ function controlHeader(string $title, string $active = '', string $guide = ''): 
     echo '<meta name="csrf-token" content="' . h(ControlAuth::csrfToken()) . '">';
     echo '<title>' . h($title) . ' · Control · La Casa de los Gatos</title>';
     echo '<link rel="icon" href="' . h(cu('/assets/logo/casa_gatos_logo.jpg')) . '?v=1" type="image/jpeg">';
-    echo '<link rel="stylesheet" href="' . h(cu('/control/assets/control.css')) . '?v=10">';
+    echo '<link rel="stylesheet" href="' . h(cu('/control/assets/control.css')) . '?v=11">';
     echo '</head><body class="control-app">';
     echo '<button type="button" class="control-sidebar__overlay" id="controlSidebarOverlay" aria-label="Cerrar menú" hidden></button>';
     echo '<div class="control-shell">';

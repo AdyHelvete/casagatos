@@ -1,93 +1,88 @@
 <?php $twRoot = __DIR__; while (!is_file($twRoot . '/lib/page-boot.php') && dirname($twRoot) !== $twRoot) { $twRoot = dirname($twRoot); } require_once $twRoot . '/lib/page-boot.php'; ?>
 <?php
 $config = tw_config();
+$content = tw_content('home');
+$hero = $content['hero'];
 $facebook = (string) ($config['social']['facebook'] ?? '');
 $instagram = (string) ($config['social']['instagram'] ?? '');
 $tiktok = (string) ($config['social']['tiktok'] ?? '');
 $whatsapp = tw_whatsapp_url();
 
-$campaigns = ContentCollection::featured('campaigns', 3);
+$jornadas = array_values(array_filter(
+    ContentCollection::published('campaigns'),
+    static fn(array $item): bool => ($item['status'] ?? '') !== 'finalizada'
+));
+$jornadas = array_slice($jornadas, 0, 3);
 $adoptions = array_values(array_filter(
     ContentCollection::published('adoptions'),
     static fn(array $item): bool => ($item['status'] ?? '') !== 'adoptado'
 ));
 $adoptions = array_slice($adoptions, 0, 4);
+$words = $content['marquee']['words'];
 ?>
 <?php tw_page_start('home'); ?>
   <main id="contenido">
     <section class="hero">
       <div class="container hero-stage">
         <div class="hero-content">
-          <span class="eyebrow">Rescate y adopción · Tizayuca y zona</span>
-          <h1>Adopta. No compres. <span>La Casa de los Gatos</span></h1>
-          <p class="lead">Rescatamos, damos asistencia y buscamos hogar responsable para gatos en Tizayuca, Tecámac, Zumpango y municipios cercanos.</p>
+          <span class="eyebrow"><?php echo tw_esc($hero['eyebrow']); ?></span>
+          <h1><?php echo tw_esc($hero['title']); ?> <span><?php echo tw_esc($hero['accent']); ?></span></h1>
+          <p class="lead"><?php echo tw_esc($hero['lead']); ?></p>
+          <?php if ($hero['bullets'] !== []): ?>
           <ul class="hero-bullets">
-            <li>Jornadas de esterilización y vacunación con costo accesible o gratuitas.</li>
-            <li>Hogares temporales mientras cada gato encuentra familia.</li>
-            <li>Acompañamiento antes y después de la adopción.</li>
+            <?php foreach ($hero['bullets'] as $bullet): ?>
+            <li><?php echo tw_esc($bullet); ?></li>
+            <?php endforeach; ?>
           </ul>
+          <?php endif; ?>
           <div class="button-row">
-            <?php if ($facebook !== ''): ?>
-              <a class="btn btn--lime" href="<?php echo tw_esc($facebook); ?>" target="_blank" rel="noopener" data-track-button="hero-facebook">Síguenos en Facebook</a>
+            <?php if ($hero['primaryLabel'] !== ''): ?>
+              <a class="btn btn--lime" href="<?php echo tw_esc(tw_url($hero['primaryUrl'])); ?>" data-track-button="hero-primario"><?php echo tw_esc($hero['primaryLabel']); ?></a>
             <?php endif; ?>
-            <a class="btn btn--ghost" href="<?php echo tw_esc(tw_url('/adopciones/')); ?>" data-track-button="hero-adopciones">Ver gatos en adopción</a>
+            <?php if ($hero['secondaryLabel'] !== ''): ?>
+              <a class="btn btn--ghost" href="<?php echo tw_esc(tw_url($hero['secondaryUrl'])); ?>" data-track-button="hero-secundario"><?php echo tw_esc($hero['secondaryLabel']); ?></a>
+            <?php endif; ?>
           </div>
         </div>
         <figure class="hero-frame">
-          <img class="hero-bg" src="<?php echo tw_esc(tw_url('/assets/images/hero-adopcion.jpg')); ?>" alt="Gato negro del logo de La Casa de los Gatos en una caja, esperando adopción en un hogar" width="1024" height="1024" fetchpriority="high">
+          <img class="hero-bg" src="<?php echo tw_esc(tw_url($hero['image'])); ?>" alt="<?php echo tw_esc($hero['imageAlt']); ?>" width="1024" height="1024" fetchpriority="high">
           <figcaption>#Adopta<span>NO</span>Compres</figcaption>
         </figure>
       </div>
     </section>
 
+    <?php if ($words !== []): ?>
     <section class="trust-strip" aria-label="Nuestra causa">
       <div class="marquee" aria-hidden="true">
-        <span>#AdoptaNoCompres</span><span>Esteriliza</span><span>Rescata</span><span>Comparte</span><span>Dona</span>
-        <span>#AdoptaNoCompres</span><span>Esteriliza</span><span>Rescata</span><span>Comparte</span><span>Dona</span>
+        <?php for ($loop = 0; $loop < 2; $loop++): foreach ($words as $word): ?><span><?php echo tw_esc($word); ?></span><?php endforeach; endfor; ?>
       </div>
     </section>
+    <?php endif; ?>
 
     <section class="section">
       <div class="container">
-        <div class="section-heading reveal">
-          <div>
-            <span class="eyebrow">Por qué existimos</span>
-            <h2>Cada gato en la calle <span class="accent">tuvo una oportunidad perdida.</span></h2>
-          </div>
-          <p>No somos un refugio con instalaciones: somos personas de la zona que rescatan, curan y buscan hogar con recursos propios y de la comunidad.</p>
-        </div>
-        <div class="values-grid reveal">
-          <article class="value-card">
-            <h3>Rescate y asistencia</h3>
-            <p>Atendemos casos de abandono, camadas recién nacidas y gatos heridos. Cubrimos veterinario, alimento y cuidados hasta que se recuperan.</p>
-          </article>
-          <article class="value-card">
-            <h3>Esterilización</h3>
-            <p>Es la única forma real de frenar el abandono. Organizamos jornadas y conectamos a las familias con clínicas aliadas.</p>
-          </article>
-          <article class="value-card">
-            <h3>Adopción responsable</h3>
-            <p>Entrevistamos, damos seguimiento y explicamos el compromiso. Un gato vive 15 años o más: no es un regalo de temporada.</p>
-          </article>
+        <?php tw_heading($content['access']); ?>
+        <div class="access-grid reveal">
+          <?php foreach ($content['access']['cards'] as $card): ?>
+          <a class="access-card" href="<?php echo tw_esc(tw_url($card['url'])); ?>">
+            <h3><?php echo tw_esc($card['title']); ?></h3>
+            <p><?php echo tw_esc($card['text']); ?></p>
+            <?php if ($card['label'] !== ''): ?><span class="content-card__link"><?php echo tw_esc($card['label']); ?></span><?php endif; ?>
+          </a>
+          <?php endforeach; ?>
         </div>
       </div>
     </section>
 
-    <?php if ($campaigns !== []): ?>
+    <?php if ($jornadas !== []): ?>
     <section class="section section--tight">
       <div class="container">
-        <div class="section-heading reveal">
-          <div>
-            <span class="eyebrow">Campañas y eventos</span>
-            <h2>Lo que está pasando ahora.</h2>
-          </div>
-          <p>Jornadas de esterilización, colectas y eventos donde puedes participar aunque no adoptes.</p>
-        </div>
+        <?php tw_heading($content['jornadas']); ?>
         <div class="content-grid content-grid--wide reveal">
-          <?php foreach ($campaigns as $item) { tw_campaign_card($item); } ?>
+          <?php foreach ($jornadas as $item) { tw_campaign_card($item); } ?>
         </div>
         <div class="button-row" style="margin-top:28px">
-          <a class="btn btn--outline" href="<?php echo tw_esc(tw_url('/campanas/')); ?>">Ver todas las campañas</a>
+          <a class="btn btn--outline" href="<?php echo tw_esc(tw_url('/tnr/')); ?>#jornadas">Ver todas las jornadas</a>
         </div>
       </div>
     </section>
@@ -96,19 +91,13 @@ $adoptions = array_slice($adoptions, 0, 4);
     <?php if ($adoptions !== []): ?>
     <section class="section section--tight">
       <div class="container">
-        <div class="section-heading reveal">
-          <div>
-            <span class="eyebrow">Buscan hogar</span>
-            <h2>Ellos están esperando.</h2>
-          </div>
-          <p>Cada ficha incluye edad, carácter y estado de salud. Si alguno te late, escríbenos y platicamos.</p>
-        </div>
+        <?php tw_heading($content['cats']); ?>
         <div class="content-grid reveal">
           <?php foreach ($adoptions as $item) { tw_adoption_card($item); } ?>
         </div>
         <div class="button-row" style="margin-top:28px">
-          <a class="btn" href="<?php echo tw_esc(tw_url('/adopciones/')); ?>">Ver todos en adopción</a>
-          <a class="btn btn--outline" href="<?php echo tw_esc(tw_url('/como-adoptar/')); ?>">Cómo es el proceso</a>
+          <a class="btn" href="<?php echo tw_esc(tw_url('/adopcion/')); ?>#gatos">Ver todos en adopción</a>
+          <a class="btn btn--outline" href="<?php echo tw_esc(tw_url('/adopcion/')); ?>#requisitos">Requisitos y proceso</a>
         </div>
       </div>
     </section>
@@ -118,9 +107,9 @@ $adoptions = array_slice($adoptions, 0, 4);
       <div class="container reveal">
         <div class="social-cta">
           <div>
-            <span class="eyebrow eyebrow--lime">Comunidad</span>
-            <h2>El día a día está en redes.</h2>
-            <p>Publicamos rescates, avances de los gatos en tratamiento y avisos de campañas. Seguirnos y compartir es la ayuda que más multiplica.</p>
+            <span class="eyebrow eyebrow--lime"><?php echo tw_esc($content['social']['eyebrow']); ?></span>
+            <h2><?php echo tw_esc($content['social']['title']); ?></h2>
+            <p><?php echo tw_esc($content['social']['text']); ?></p>
           </div>
           <div class="social-cta__links">
             <?php if ($facebook !== ''): ?>
@@ -146,41 +135,12 @@ $adoptions = array_slice($adoptions, 0, 4);
       </div>
     </section>
 
-    <section class="section">
-      <div class="container">
-        <div class="section-heading reveal">
-          <div>
-            <span class="eyebrow">Cómo apoyar</span>
-            <h2>No hace falta adoptar <span class="accent">para ayudar.</span></h2>
-          </div>
-          <p>Todo suma: desde compartir una publicación hasta abrir tu casa unas semanas.</p>
-        </div>
-        <div class="highlight-grid reveal">
-          <article class="highlight-card">
-            <h3>Adopta</h3>
-            <p>Revisa las fichas disponibles y empieza el proceso. Te acompañamos en la adaptación.</p>
-            <a class="content-card__link" href="<?php echo tw_esc(tw_url('/adopciones/')); ?>">Ver disponibles</a>
-          </article>
-          <article class="highlight-card">
-            <h3>Sé hogar temporal</h3>
-            <p>Cuidas a un gato unas semanas mientras encuentra familia. Nosotros cubrimos alimento y veterinario.</p>
-            <a class="content-card__link" href="<?php echo tw_esc(tw_url('/contacto/')); ?>">Quiero postularme</a>
-          </article>
-          <article class="highlight-card">
-            <h3>Dona o comparte</h3>
-            <p>Alimento, arena, cobijas o difusión. Compartir una publicación cuesta cero y salva vidas.</p>
-            <a class="content-card__link" href="<?php echo tw_esc(tw_url('/campanas/')); ?>">Ver campañas</a>
-          </article>
-        </div>
-      </div>
-    </section>
-
     <section class="section section--tight">
       <div class="container reveal">
         <div class="cta-band">
           <div>
-            <h2>¿Listo para dar el paso?</h2>
-            <p>Escríbenos por WhatsApp o llena el formulario y te contamos cómo seguir.</p>
+            <h2><?php echo tw_esc($content['cta']['title']); ?></h2>
+            <p><?php echo tw_esc($content['cta']['text']); ?></p>
           </div>
           <?php if ($whatsapp !== ''): ?>
             <a class="btn" href="<?php echo tw_esc($whatsapp); ?>" target="_blank" rel="noopener" data-track-button="home-cta-whatsapp">Escribir por WhatsApp</a>

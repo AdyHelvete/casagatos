@@ -16,7 +16,7 @@ class PageImporter
     ];
 
     /** Slugs que no deben eliminarse ni renombrarse desde el panel. */
-    private const SYSTEM_SLUGS = ['', 'contacto', 'aviso-de-privacidad'];
+    private const SYSTEM_SLUGS = ['', 'tnr', 'adopcion', 'asistencia', 'directorio', 'contacto', 'aviso-de-privacidad'];
 
     /**
      * Slugs de primer nivel que tienen un index.html o index.php.

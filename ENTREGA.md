@@ -15,6 +15,55 @@ contenido vive en archivos JSON dentro de `data/`.
 
 ---
 
+## 0. Estructura vigente (2026-10-04)
+
+El demo inicial se rediseñó con la estructura que pidió el cliente en
+`Estructura_Sitio_Web.pdf`. Donde este documento mencione Nosotros, Campañas,
+Galería o Cómo adoptar, manda esta sección.
+
+| Pestaña | URL | Contenido |
+|---|---|---|
+| Inicio | `/` | Presentación y acceso rápido a las demás secciones |
+| TNR | `/tnr/` | Qué es, control ético, orientación de esterilización y jornadas (`/tnr/<jornada>/`) |
+| Adopción | `/adopcion/` | Requisitos (mayor de 18 años), onicectomía, proceso, visita y entrevista, gatos, cuestionario, seguimiento e historias felices (`/adopcion/<gato>/`) |
+| Asistencia y orientación | `/asistencia/` | Qué hacer en cada caso + Denuncias (cómo denunciar, a dónde acudir) |
+| Directorio | `/directorio/` | Clínicas de Tizayuca y, para casos específicos, de Zumpango |
+
+Fuera del menú, enlazadas en el pie: `/contacto/` y `/aviso-de-privacidad/`.
+Contacto puede volver al menú desde **Páginas y menú**.
+
+Las URLs anteriores redirigen con 301 (`.htaccess`): `/adopciones/` y
+`/como-adoptar/` → `/adopcion/`, `/campanas/` → `/tnr/`, `/denuncias` →
+`/asistencia/#denuncias`, `/nosotros/` y `/galeria/` → inicio.
+
+Dónde se edita cada cosa en el panel:
+
+| Panel | Controla |
+|---|---|
+| Textos de las páginas | Títulos, textos, listas, pasos, preguntas del cuestionario y aviso de onicectomía de cada pestaña (`data/content.json`) |
+| TNR · Jornadas | Jornadas de esterilización y TNR (`data/campaigns.json`) |
+| Adopción · Gatos e historias | Fichas; el estado "Adoptado" las pasa a Historias felices (`data/adoptions.json`) |
+| Orientación · Casos | Acordeón "Qué hacer en cada caso" (`data/guides.json`) |
+| Directorio · Clínicas | Clínicas por zona con servicios, horario, teléfono y mapa (`data/clinics.json`) |
+| Contactos y cuestionarios | Mensajes de `/contacto/` y cuestionarios de adopción |
+
+Pendientes del cliente propios de esta estructura:
+
+1. **Directorio:** las cuatro clínicas son fichas de muestra ("Clínica de
+   ejemplo"). Hay que sustituirlas por clínicas reales.
+2. **Denuncias → A dónde acudir:** el texto describe las instancias de forma
+   general, sin teléfonos de dependencias locales. Verificar y completar.
+3. **Jornadas:** las dos próximas están "por confirmar"; poner fecha, sede y
+   costo reales.
+4. **TNR y esterilización:** revisar con un médico veterinario las indicaciones
+   de ayuno, edad mínima y recuperación.
+
+Revisión en local: `php -S localhost:8080 _dev-router.php` (el router emula el
+`.htaccess`; no se sube a producción). Las redirecciones del `.htaccess` nuevo
+se probaron con ese router, no con Apache: verificarlas en el preview.
+
+---
+
 ## 1. Requisitos del hosting
 
 | Requisito | Detalle |

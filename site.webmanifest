@@ -1,7 +1,7 @@
 {
   "name": "La Casa de los Gatos",
   "short_name": "Casa de los Gatos",
-  "description": "Rescate, asistencia y adopción responsable de gatos en Tizayuca y la zona.",
+  "description": "TNR, adopción responsable, orientación y directorio de clínicas veterinarias en Tizayuca y la zona.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#f6efe4",

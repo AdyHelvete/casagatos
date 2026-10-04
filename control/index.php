@@ -22,7 +22,10 @@ $campaignsActive = count(array_filter(
     ContentCollection::published('campaigns'),
     fn(array $item): bool => in_array((string) ($item['status'] ?? ''), ['activa', 'proxima'], true)
 ));
-$albumCount = count(ContentCollection::published('albums'));
+$guideCount = count(ContentCollection::published('guides'));
+$clinics = ContentCollection::published('clinics');
+$clinicsTizayuca = count(array_filter($clinics, fn(array $item): bool => ($item['zone'] ?? '') === 'tizayuca'));
+$clinicsZumpango = count($clinics) - $clinicsTizayuca;
 
 controlHeader('Dashboard', 'index');
 ?>
@@ -33,19 +36,29 @@ controlHeader('Dashboard', 'index');
 <?php endif; ?>
 <div class="control-cards">
     <article class="control-card">
-        <h2>Adopciones <?php echo controlHelp('Fichas de /adopciones/. Solo se muestran las publicadas; cambia el estado a Adoptado cuando encuentren hogar.'); ?></h2>
-        <p><?php echo (int) $available; ?> en adopción · <?php echo (int) $adopted; ?> ya adoptados.</p>
-        <a class="control-btn control-btn--ghost" href="<?php echo h(cu('/control/adoptions.php')); ?>">Gestionar adopciones</a>
+        <h2>Textos de las páginas <?php echo controlHelp('Títulos, textos, listas y preguntas del cuestionario de cada pestaña: Inicio, TNR, Adopción, Asistencia y orientación, Directorio y Contacto.'); ?></h2>
+        <p>Edita el contenido de cada pestaña sin tocar código.</p>
+        <a class="control-btn control-btn--ghost" href="<?php echo h(cu('/control/content.php')); ?>">Editar textos</a>
     </article>
     <article class="control-card">
-        <h2>Campañas y eventos <?php echo controlHelp('Jornadas de esterilización, vacunación, colectas y eventos. Las marcadas como destacadas salen en el home.'); ?></h2>
-        <p><?php echo (int) $campaignsActive; ?> activa(s) o próxima(s).</p>
-        <a class="control-btn control-btn--ghost" href="<?php echo h(cu('/control/campaigns.php')); ?>">Gestionar campañas</a>
+        <h2>TNR · Jornadas <?php echo controlHelp('Jornadas de esterilización y TNR de /tnr/. Las finalizadas pasan al historial.'); ?></h2>
+        <p><?php echo (int) $campaignsActive; ?> abierta(s) o próxima(s).</p>
+        <a class="control-btn control-btn--ghost" href="<?php echo h(cu('/control/jornadas.php')); ?>">Gestionar jornadas</a>
     </article>
     <article class="control-card">
-        <h2>Galerías <?php echo controlHelp('Álbumes publicados en /galeria/. Cada álbum tiene portada y lista de fotos.'); ?></h2>
-        <p><?php echo (int) $albumCount; ?> álbum(es) publicados.</p>
-        <a class="control-btn control-btn--ghost" href="<?php echo h(cu('/control/albums.php')); ?>">Gestionar galerías</a>
+        <h2>Adopción <?php echo controlHelp('Fichas de /adopcion/. Las marcadas como Adoptado se muestran en Historias felices.'); ?></h2>
+        <p><?php echo (int) $available; ?> en adopción · <?php echo (int) $adopted; ?> historias felices.</p>
+        <a class="control-btn control-btn--ghost" href="<?php echo h(cu('/control/adoptions.php')); ?>">Gestionar fichas</a>
+    </article>
+    <article class="control-card">
+        <h2>Orientación <?php echo controlHelp('Casos de "Qué hacer en cada caso" de /asistencia/. Las denuncias se editan en Textos de las páginas.'); ?></h2>
+        <p><?php echo (int) $guideCount; ?> caso(s) publicados.</p>
+        <a class="control-btn control-btn--ghost" href="<?php echo h(cu('/control/guides.php')); ?>">Gestionar casos</a>
+    </article>
+    <article class="control-card">
+        <h2>Directorio <?php echo controlHelp('Clínicas veterinarias de /directorio/, por zona y con sus servicios.'); ?></h2>
+        <p><?php echo (int) $clinicsTizayuca; ?> en Tizayuca · <?php echo (int) $clinicsZumpango; ?> en Zumpango.</p>
+        <a class="control-btn control-btn--ghost" href="<?php echo h(cu('/control/clinics.php')); ?>">Gestionar clínicas</a>
     </article>
     <article class="control-card">
         <h2>Páginas y menú <?php echo controlHelp('Crea secciones, el menú superior y publícalas. El orden más bajo sale primero. Los borradores no se ven salvo con ?preview y sesión activa.'); ?></h2>

@@ -980,3 +980,100 @@ body.menu-open .whatsapp-float { opacity: 0; pointer-events: none; }
   html.js-reveal .reveal { opacity: 1; transform: none; }
   .marquee { animation: none; }
 }
+
+/* ── Estructura 2026: TNR · Adopción · Asistencia y orientación · Directorio ── */
+.subheading { font-size: clamp(1.2rem, 2vw, 1.5rem); margin: 44px 0 20px; }
+.section--dark .subheading { color: var(--white); }
+.process-grid--auto { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+.check-list--columns { gap: 14px 32px; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.plain-list { display: grid; gap: 10px; list-style: disc; margin-left: 1.2rem; }
+.plain-list li { color: var(--muted); }
+.notice {
+  background: var(--white);
+  border-left: 6px solid var(--yellow);
+  color: var(--muted);
+  font-size: .95rem;
+  margin: 28px 0;
+  padding: 16px 20px;
+}
+
+.access-grid { display: grid; gap: 16px; grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.access-card {
+  background:
+    url("../decor/paw-stamp.png") no-repeat right 10px top 10px / 40px,
+    var(--white);
+  border: 2px solid var(--ink);
+  border-radius: 4px 18px 4px 18px;
+  box-shadow: 5px 5px 0 var(--kraft);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 24px 20px;
+  transition: box-shadow .18s ease, transform .18s ease;
+}
+.access-card:nth-child(4n+2) { background-image: url("../decor/heart-stamp.png"); }
+.access-card:nth-child(4n+3) { background-image: url("../decor/house-stamp.png"); }
+.access-card:nth-child(4n) { background-image: url("../decor/bone-stamp.png"); }
+.access-card:hover, .access-card:focus-visible { box-shadow: 2px 2px 0 var(--ink); transform: translate(3px, 3px); }
+.access-card h3 { padding-right: 44px; }
+.access-card p { color: var(--muted); flex: 1; font-size: .95rem; }
+
+.care-grid { display: grid; gap: 20px; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.care-card { background: var(--white); border: 2px solid var(--ink); border-radius: 4px 18px 4px 18px; padding: 26px 24px; }
+.care-card .check-list { margin-top: 18px; }
+.care-card .check-list li { font-weight: 600; }
+
+.callout {
+  background: var(--white);
+  border: 2px solid var(--ink);
+  border-left: 10px solid #c43c3c;
+  box-shadow: 6px 6px 0 var(--kraft);
+  padding: clamp(24px, 4vw, 44px);
+}
+.callout h2 { margin: 14px 0; max-width: 24ch; }
+.callout__lead { font-size: 1.05rem; max-width: 62ch; }
+.callout__grid { display: grid; gap: 28px; grid-template-columns: repeat(2, minmax(0, 1fr)); margin-top: 28px; }
+.callout__grid h3 { font-size: 1.1rem; margin-bottom: 12px; }
+.callout__note { border-top: 2px dashed var(--kraft); font-weight: 700; margin-top: 28px; padding-top: 18px; }
+
+.clinic-grid { display: grid; gap: 18px; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); }
+.clinic-card {
+  background: var(--white);
+  border: 2px solid var(--ink);
+  border-radius: 4px 18px 4px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 24px 22px;
+  scroll-margin-top: calc(var(--header-h) + 16px);
+}
+.clinic-card__head { align-items: flex-start; display: flex; gap: 12px; justify-content: space-between; }
+.clinic-card > p { color: var(--muted); font-size: .95rem; }
+.clinic-card__specialty { background: var(--paper); border-left: 4px solid var(--lime); padding: 10px 12px; }
+.clinic-card__facts { display: grid; gap: 10px; margin-top: auto; }
+.clinic-card__facts dt { color: var(--muted); font-size: .72rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; }
+.clinic-card__facts dd { font-weight: 700; }
+.clinic-card__facts a { color: var(--blue); text-decoration: underline; }
+
+.guide-item { scroll-margin-top: calc(var(--header-h) + 16px); }
+.guide-item .detail-body { margin-top: 12px; }
+.guide-item .content-card__link { display: inline-block; margin-top: 12px; }
+.guide-item summary .badge { margin-right: 6px; vertical-align: middle; }
+
+.contact-form--wide { max-width: 860px; }
+.field textarea.field__answer { min-height: 72px; }
+.field--check label { align-items: flex-start; cursor: pointer; display: flex; font-size: .95rem; gap: 10px; }
+.field--check input { flex: none; height: 20px; margin-top: 2px; padding: 0; width: 20px; }
+
+main [id] { scroll-margin-top: calc(var(--header-h) + 16px); }
+
+@media (max-width: 1100px) {
+  .access-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .nav-links { gap: 12px; }
+}
+@media (max-width: 760px) {
+  .care-grid, .callout__grid, .check-list--columns { grid-template-columns: 1fr; }
+}
+@media (max-width: 560px) {
+  .access-grid { grid-template-columns: 1fr; }
+}

@@ -118,6 +118,12 @@ function isValidName(string $name): bool
 
 function isAllowedService(string $service): bool
 {
+    // El cuestionario de /adopcion/ usa un motivo fijo que no depende de la
+    // lista editable (mismo valor que PageContent::ADOPTION_FORM_SERVICE).
+    if ($service === 'Cuestionario de adopción') {
+        return true;
+    }
+
     return in_array($service, (array) contactSetting('services'), true);
 }
 
