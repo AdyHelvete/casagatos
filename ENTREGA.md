@@ -49,10 +49,16 @@ Dónde se edita cada cosa en el panel:
 
 Pendientes del cliente propios de esta estructura:
 
-1. **Directorio:** las cuatro clínicas son fichas de muestra ("Clínica de
-   ejemplo"). Hay que sustituirlas por clínicas reales.
-2. **Denuncias → A dónde acudir:** el texto describe las instancias de forma
-   general, sin teléfonos de dependencias locales. Verificar y completar.
+1. **Directorio:** cargado el 2026-10-06 con los 32 lugares del documento
+   del cliente (`veterinarias_tizayuca_zumpango-2.docx`): clínicas, tiendas y
+   estéticas por zona, con categoría editable en el panel. No se publicaron
+   las calificaciones de Google. Falta: WhatsApp de cada lugar y confirmar los
+   horarios de PetVelvet y Veterinaria Xolotl (aparecen como 24 h).
+2. **Denuncias:** reescrita el 2026-10-06 con el documento del cliente
+   (`Denunciar_para_proteger_Tizayuca-1.docx`): qué es una denuncia, cómo
+   denunciar en Tizayuca, autoridades que intervienen, CECOBAM, Seguridad
+   Ciudadana, Justicia Cívica y qué reunir. Todo editable en **Textos de las
+   páginas → Asistencia y orientación**. Siguen sin teléfonos de dependencias.
 3. **Jornadas:** las dos próximas están "por confirmar"; poner fecha, sede y
    costo reales.
 4. **TNR y esterilización:** revisar con un médico veterinario las indicaciones

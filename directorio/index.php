@@ -2,6 +2,7 @@
 <?php
 $content = tw_content('directorio');
 $clinics = ContentCollection::published('clinics');
+$categories = ContentCollection::optionLabels('clinics', 'category');
 $zones = [];
 foreach (array_keys(ContentCollection::optionLabels('clinics', 'zone')) as $zone) {
     $zones[$zone] = array_values(array_filter(
@@ -9,6 +10,21 @@ foreach (array_keys(ContentCollection::optionLabels('clinics', 'zone')) as $zone
         static fn(array $item): bool => (string) ($item['zone'] ?? '') === $zone
     ));
 }
+// Dentro de cada zona, los lugares se agrupan por tipo (clínica, tienda, estética).
+$byCategory = static function (array $items) use ($categories): array {
+    $groups = [];
+    foreach (array_keys($categories) as $category) {
+        $group = array_values(array_filter(
+            $items,
+            static fn(array $item): bool => (string) ($item['category'] ?? '') === $category
+        ));
+        if ($group !== []) {
+            $groups[$category] = $group;
+        }
+    }
+
+    return $groups;
+};
 ?>
 <?php tw_page_start('directorio'); ?>
   <main id="contenido">
@@ -30,9 +46,15 @@ foreach (array_keys(ContentCollection::optionLabels('clinics', 'zone')) as $zone
           <p>Si conoces una, escríbenos y la agregamos al directorio.</p>
         </div>
       <?php else: ?>
-        <div class="clinic-grid reveal">
-          <?php foreach ($items as $item) { tw_clinic_card($item); } ?>
-        </div>
+        <?php $groups = $byCategory($items); ?>
+        <?php foreach ($groups as $category => $group): ?>
+          <?php if (count($groups) > 1): ?>
+            <h3 class="subheading reveal" id="<?php echo tw_esc($zone . '-' . $category); ?>"><?php echo tw_esc($categories[$category]); ?> (<?php echo count($group); ?>)</h3>
+          <?php endif; ?>
+          <div class="clinic-grid reveal">
+            <?php foreach ($group as $item) { tw_clinic_card($item); } ?>
+          </div>
+        <?php endforeach; ?>
       <?php endif; ?>
     </div></section>
     <?php endforeach; ?>

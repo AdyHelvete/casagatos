@@ -68,7 +68,10 @@ class ContentCollection
                 'html' => [],
                 'bool' => ['published', 'emergency'],
                 'list' => ['services'],
-                'enum' => ['zone' => ['tizayuca', 'zumpango']],
+                'enum' => [
+                    'zone' => ['tizayuca', 'zumpango'],
+                    'category' => ['veterinaria', 'tienda', 'estetica'],
+                ],
                 'titleField' => 'name',
             ],
         ];
@@ -370,6 +373,11 @@ class ContentCollection
                 'zone' => [
                     'tizayuca' => 'Tizayuca',
                     'zumpango' => 'Zumpango',
+                ],
+                'category' => [
+                    'veterinaria' => 'Clínicas y veterinarias',
+                    'tienda' => 'Tiendas de mascotas',
+                    'estetica' => 'Estéticas',
                 ],
             ],
         ];

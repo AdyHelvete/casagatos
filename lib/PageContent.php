@@ -47,7 +47,7 @@ class PageContent
                             'bullets' => self::lines('Puntos clave', [
                                 'TNR y jornadas de esterilización para frenar el abandono de raíz.',
                                 'Adopción con cuestionario, visita al hogar y seguimiento.',
-                                'Orientación para rescates, denuncias y atención veterinaria.',
+                                'Orientación para rescates, denuncias ante la autoridad correcta y atención veterinaria.',
                             ]),
                             'image' => self::image('Imagen', '/assets/images/hero-adopcion.jpg'),
                             'imageAlt' => self::text('Descripción de la imagen', 'Gato negro de La Casa de los Gatos dentro de una caja de cartón'),
@@ -69,8 +69,8 @@ class PageContent
                             'cards' => self::items('Tarjetas', ['title' => 'Título', 'text' => 'Texto', 'label' => 'Texto del enlace', 'url' => 'Enlace'], [
                                 ['title' => 'TNR', 'text' => 'Qué es el Trampeo, Esterilización y Retorno, cómo preparar a un gato para su cirugía y cuándo son las próximas jornadas.', 'label' => 'Conocer el TNR', 'url' => '/tnr/'],
                                 ['title' => 'Adopción', 'text' => 'Requisitos, cuestionario, visita al hogar, seguimiento y las historias de quienes ya encontraron familia.', 'label' => 'Quiero adoptar', 'url' => '/adopcion/'],
-                                ['title' => 'Asistencia y orientación', 'text' => 'Qué hacer si encontraste un gato herido, una camada o un caso de maltrato. Incluye cómo y dónde denunciar.', 'label' => 'Pedir orientación', 'url' => '/asistencia/'],
-                                ['title' => 'Directorio', 'text' => 'Clínicas veterinarias de Tizayuca y, para casos específicos, de Zumpango, con el servicio que ofrece cada una.', 'label' => 'Ver clínicas', 'url' => '/directorio/'],
+                                ['title' => 'Asistencia y orientación', 'text' => 'Qué hacer si encontraste un gato herido, una camada o un caso de maltrato, y qué autoridad de Tizayuca atiende cada denuncia.', 'label' => 'Pedir orientación', 'url' => '/asistencia/'],
+                                ['title' => 'Directorio', 'text' => 'Veterinarias, urgencias 24 h, tiendas de mascotas y estéticas de Tizayuca y, para casos específicos, de Zumpango.', 'label' => 'Ver clínicas', 'url' => '/directorio/'],
                             ]),
                         ],
                     ],
@@ -317,36 +317,98 @@ class PageContent
                         'fields' => self::heading('Orientación', 'Elige la situación que se parece a la tuya.', 'Abre cada caso para ver los pasos. Si el tuyo no aparece, escríbenos.'),
                     ],
                     'report' => [
-                        'label' => 'Denuncias: cómo denunciar',
-                        'fields' => self::heading('Denuncias', 'Cómo denunciar el maltrato animal.', 'El maltrato y la crueldad contra los animales están sancionados por la ley. Denunciar es un derecho de cualquier persona; no necesitas ser dueña o dueño del animal.') + [
-                            'steps' => self::items('Pasos para denunciar', ['title' => 'Título', 'text' => 'Texto'], [
-                                ['title' => '1. Pon a salvo lo urgente', 'text' => 'Si el animal está siendo agredido en ese momento o su vida corre peligro, llama al 911. No te expongas ni confrontes a la persona agresora.'],
-                                ['title' => '2. Reúne evidencia', 'text' => 'Fotos y videos con fecha, ubicación exacta, descripción de los hechos y, si los hay, datos de testigos. Entre más concreta, mejor.'],
-                                ['title' => '3. Presenta la denuncia', 'text' => 'Acude a la instancia que corresponde según el caso y el municipio (ver "A dónde acudir"). Pide que te entreguen un número de folio o acuse.'],
-                                ['title' => '4. Da seguimiento', 'text' => 'Guarda el folio y pregunta por el avance. Si no hay respuesta, escríbenos con el número de folio y te orientamos sobre el siguiente paso.'],
+                        'label' => 'Denuncias: qué es y cómo denunciar',
+                        'help' => 'En los textos largos deja una línea en blanco para separar párrafos.',
+                        'fields' => self::heading('Denuncias', 'Denunciar para proteger.', 'Cuando un animal está en riesgo, saber a quién avisar es tan importante como avisar. Aquí explicamos qué es una denuncia y qué autoridad de Tizayuca atiende cada tipo de situación.') + [
+                            'whatTitle' => self::text('Título "qué es"', '¿Qué es una denuncia?'),
+                            'whatText' => self::textarea('Qué es una denuncia', "Una denuncia es el reporte que hace una persona ante una autoridad para informar de un hecho que puede afectar el bienestar de un animal, la salud pública, el ambiente o la seguridad de la comunidad. Por ejemplo, cuando un animal está abandonado, sin agua, lesionado, expuesto al clima, atrapado o en una posible situación de maltrato.\n\nEn Hidalgo, cualquier persona puede denunciar hechos que vayan en contra de la protección y el trato digno de los animales, ante el área municipal competente o ante la Procuraduría correspondiente. La ley también permite hacerlo de forma anónima."),
+                            'howTitle' => self::text('Título "cómo denunciar"', 'Cómo denunciar en Tizayuca'),
+                            'howIntro' => self::textarea('Introducción de "cómo denunciar"', 'El reporte se presenta ante la autoridad que corresponda según la situación observada. Para que sea útil, conviene incluir:'),
+                            'howList' => self::lines('Qué incluir en el reporte (uno por línea)', [
+                                'Qué ocurrió y dónde: calle, número, colonia y alguna referencia.',
+                                'Cuándo ocurrió, o desde cuándo está pasando.',
+                                'Cuántos animales están involucrados y sus características.',
+                                'Fotografías, videos, ubicación o testimonios, si se tienen.',
+                                'Si existe un riesgo inmediato para el animal o para las personas.',
                             ]),
-                            'evidenceTitle' => self::text('Título de la lista de evidencia', 'Qué debe llevar tu denuncia'),
-                            'evidence' => self::lines('Evidencia (una por línea)', [
-                                'Dirección exacta o referencias claras del lugar.',
-                                'Fecha y hora de los hechos.',
-                                'Descripción del animal y de lo que ocurrió.',
-                                'Fotografías o videos, sin editar.',
-                                'Nombre o señas de la persona responsable, si los conoces.',
-                            ]),
+                            'howNote' => self::textarea('Dónde se entrega', 'El reporte puede entregarse en el Ayuntamiento, el CECOBAM o el área competente. Si la situación es una emergencia en curso, se pide apoyo directo a Seguridad Ciudadana.'),
                         ],
                     ],
                     'where' => [
-                        'label' => 'Denuncias: a dónde acudir',
-                        'help' => 'Verifica con cada dependencia sus datos y horarios vigentes antes de publicar teléfonos.',
-                        'fields' => self::heading('A dónde acudir', 'Depende del caso y del municipio.', 'Tizayuca pertenece a Hidalgo y Zumpango al Estado de México: las instancias cambian según dónde ocurran los hechos.') + [
-                            'places' => self::items('Instancias', ['title' => 'Instancia', 'text' => 'Cuándo acudir y cómo contactarla'], [
-                                ['title' => 'Emergencias 911', 'text' => 'Cuando la agresión está ocurriendo en ese momento o hay riesgo inmediato para el animal o para las personas.'],
-                                ['title' => 'Denuncia anónima 089', 'text' => 'Para reportar hechos sin dar tu nombre. Sirve cuando temes represalias de la persona agresora.'],
-                                ['title' => 'Ministerio Público', 'text' => 'Para presentar una denuncia formal por maltrato o crueldad animal. Lleva tu evidencia y una identificación; pide tu número de carpeta.'],
-                                ['title' => 'Autoridad municipal de Tizayuca', 'text' => 'Para reportes de animales en situación de riesgo, abandono o condiciones insalubres dentro del municipio. Pregunta en Presidencia Municipal por el área de ecología o protección animal.'],
-                                ['title' => 'Procuraduría ambiental estatal', 'text' => 'En Hidalgo y en el Estado de México las procuradurías de protección al ambiente reciben denuncias por maltrato animal. Para hechos en Zumpango corresponde la del Estado de México.'],
+                        'label' => 'Denuncias: autoridades que intervienen',
+                        'help' => 'Una tarjeta por autoridad. Verifica con cada dependencia sus datos vigentes antes de agregar teléfonos.',
+                        'fields' => self::heading('A dónde acudir', 'Autoridades que intervienen.', 'Tizayuca no tiene una sola oficina para todo: cada autoridad atiende una parte distinta del problema.') + [
+                            'places' => self::items('Autoridades', ['title' => 'Autoridad', 'text' => 'Qué hace', 'when' => 'Cuándo interviene'], [
+                                ['title' => 'CECOBAM', 'text' => 'Centro de Control y Bienestar Animal Municipal. Atiende salud, protección y bienestar de los animales.', 'when' => 'Animales abandonados, lesionados, enfermos o en posible maltrato.'],
+                                ['title' => 'Ecología y Medio Ambiente', 'text' => 'Atiende lo que afecta el entorno o las condiciones sanitarias del lugar.', 'when' => 'Basura, heces, malos olores, insalubridad o fauna silvestre.'],
+                                ['title' => 'Juzgado Cívico', 'text' => 'Media conflictos vecinales y conoce faltas administrativas.', 'when' => 'Problemas entre vecinos: ladridos, olores, animales sueltos.'],
+                                ['title' => 'Seguridad Ciudadana', 'text' => 'Primer respondiente: atiende el reporte inicial y canaliza a quien corresponda.', 'when' => 'Riesgo inmediato, flagrancia o peligro para personas o animales.'],
+                                ['title' => 'Bomberos y Protección Civil', 'text' => 'Auxilio técnico en emergencias y rescates.', 'when' => 'Animal atrapado en coladera, pozo, azotea o sitio peligroso.'],
+                                ['title' => 'Ministerio Público', 'text' => 'Investiga posibles delitos y puede abrir una carpeta de investigación.', 'when' => 'Envenenamiento, crueldad, lesiones intencionales o muerte del animal.'],
                             ]),
                             'note' => self::textarea('Nota', 'La Casa de los Gatos no es autoridad y no puede retirar animales de un domicilio. Lo que sí hacemos es orientarte para que tu denuncia esté bien presentada y acompañarte en el seguimiento.'),
+                        ],
+                    ],
+                    'cecobam' => [
+                        'label' => 'Denuncias: el CECOBAM',
+                        'fields' => [
+                            'title' => self::text('Título', 'El CECOBAM, más de cerca'),
+                            'text' => self::textarea('Texto', 'CECOBAM significa Centro de Control y Bienestar Animal Municipal. Es el área encargada de perros y gatos en Tizayuca, y su meta es prevenir el abandono y apoyar en situaciones de riesgo, no solo recoger animales.'),
+                            'listTitle' => self::text('Título de la lista', 'Entre sus tareas están'),
+                            'list' => self::lines('Tareas (una por línea)', [
+                                'Atender reportes de posible maltrato animal.',
+                                'Valorar las condiciones de un animal en riesgo.',
+                                'Realizar o apoyar campañas de vacunación y esterilización.',
+                                'Promover la adopción responsable.',
+                                'Canalizar casos a otras autoridades cuando hace falta.',
+                            ]),
+                        ],
+                    ],
+                    'responder' => [
+                        'label' => 'Denuncias: Seguridad Ciudadana',
+                        'fields' => [
+                            'title' => self::text('Título', 'Seguridad Ciudadana: primer respondiente'),
+                            'text' => self::textarea('Texto', 'Cuando la situación es urgente, Seguridad Ciudadana suele ser la primera autoridad en llegar. Protege a las personas, evita que el riesgo crezca y después canaliza el caso.'),
+                            'listTitle' => self::text('Título de la lista', 'Atiende la urgencia y canaliza a'),
+                            'routes' => self::items('Canalización', ['title' => 'Autoridad', 'text' => 'En qué caso'], [
+                                ['title' => 'CECOBAM', 'text' => 'si es un tema de bienestar animal.'],
+                                ['title' => 'Ecología', 'text' => 'si hay contaminación o insalubridad.'],
+                                ['title' => 'Bomberos', 'text' => 'si el animal necesita rescate.'],
+                                ['title' => 'Juzgado Cívico', 'text' => 'si hay un conflicto vecinal.'],
+                                ['title' => 'Ministerio Público', 'text' => 'si hay indicios de un delito.'],
+                            ]),
+                        ],
+                    ],
+                    'civic' => [
+                        'label' => 'Denuncias: Justicia Cívica',
+                        'help' => 'Deja una línea en blanco para separar párrafos.',
+                        'fields' => [
+                            'title' => self::text('Título', 'Justicia Cívica y mediación'),
+                            'text' => self::textarea('Texto', "El Juzgado Cívico no investiga delitos ni sustituye al Ministerio Público: ayuda a que vecinos dialoguen y lleguen a acuerdos. Por ejemplo, si unos perros ladran toda la noche y eso genera fricción entre vecinos, ahí interviene.\n\nPero si un animal está gravemente lesionado, fue envenenado o hay violencia de por medio, el caso ya no es solo mediación: ahí entran Seguridad Ciudadana, el CECOBAM y, de ser necesario, el Ministerio Público."),
+                        ],
+                    ],
+                    'evidence' => [
+                        'label' => 'Denuncias: qué reunir',
+                        'fields' => self::heading('Antes de denunciar', 'Qué necesitas reunir para denunciar.', 'Entre mejor documentado esté tu reporte, más fácil es que la autoridad actúe. Antes de presentarlo, procura tener:') + [
+                            'list' => self::lines('Qué reunir (uno por línea)', [
+                                'Fotografías o videos claros de la situación.',
+                                'Domicilio completo: calle, número, colonia y alguna referencia del lugar.',
+                                'Fecha, hora y desde cuándo ocurre la situación.',
+                                'Descripción del animal: especie, color, tamaño y señas particulares.',
+                                'Nombre o datos de la persona responsable, si se conocen.',
+                                'Testigos dispuestos a dar su nombre y contacto, si los hay.',
+                                'Reporte o certificado veterinario, si el animal fue atendido.',
+                                'Relación breve de los hechos: qué observaste primero y qué pasó después.',
+                            ]),
+                            'note' => self::textarea('Nota', 'No es necesario tenerlo todo: entrega lo que tengas, sin ponerte en riesgo, y describe solo lo que viste.'),
+                        ],
+                    ],
+                    'summary' => [
+                        'label' => 'Denuncias: en resumen',
+                        'fields' => [
+                            'eyebrow' => self::text('Etiqueta', 'En resumen'),
+                            'text' => self::textarea('Texto', 'Denunciar es una forma de cuidar a los animales y a la comunidad. El CECOBAM atiende el bienestar animal, Ecología lo ambiental y sanitario, Justicia Cívica los conflictos vecinales, Seguridad Ciudadana responde primero en emergencias, Bomberos hace los rescates técnicos, y el Ministerio Público investiga los posibles delitos.'),
+                            'source' => self::text('Fuente', 'Contenido informativo elaborado por La Casa de los Gatos, con base en el marco municipal y estatal de Tizayuca, Hidalgo.'),
                         ],
                     ],
                     'cta' => [
@@ -365,23 +427,23 @@ class PageContent
                 'sections' => [
                     'hero' => [
                         'label' => 'Encabezado',
-                        'help' => 'Las clínicas se administran en Control · Directorio de clínicas.',
-                        'fields' => self::hero('Directorio', 'Clínicas veterinarias', 'de la zona.', 'Clínicas de Tizayuca y, para casos específicos, de Zumpango. En cada una indicamos qué tipo de servicio ofrece para que sepas a cuál acudir.'),
+                        'help' => 'Los lugares se administran en Control · Directorio · Clínicas.',
+                        'fields' => self::hero('Directorio', 'Veterinarias y servicios', 'de la zona.', 'Clínicas veterinarias, tiendas de mascotas y estéticas de Tizayuca y, para casos específicos, de Zumpango, con dirección, teléfono y horario de cada lugar.'),
                     ],
                     'tizayuca' => [
                         'label' => 'Clínicas de Tizayuca',
-                        'fields' => self::heading('Tizayuca', 'Clínicas veterinarias en Tizayuca.', 'Para consulta general, vacunación, esterilización y urgencias dentro del municipio.'),
+                        'fields' => self::heading('Tizayuca, Hgo.', 'Veterinarias y servicios en Tizayuca.', 'Clínicas y veterinarias, tiendas de mascotas y estéticas dentro del municipio, incluido el CECOBAM y una clínica de urgencias abierta las 24 horas.'),
                     ],
                     'zumpango' => [
                         'label' => 'Clínicas de Zumpango',
-                        'fields' => self::heading('Zumpango', 'Para casos específicos, en Zumpango.', 'Cuando el caso requiere un servicio que no está disponible en Tizayuca: estudios, cirugías especializadas u hospitalización.'),
+                        'fields' => self::heading('Zumpango, Edo. Méx.', 'Para casos específicos, en Zumpango.', 'Clínicas y hospitales veterinarios de Zumpango de Ocampo, para cuando el caso requiere un servicio que no encuentras en Tizayuca.'),
                     ],
                     'note' => [
                         'label' => 'Aviso y llamado final',
                         'fields' => [
                             'disclaimer' => self::textarea('Aviso', 'Este directorio es informativo. La Casa de los Gatos no cobra por aparecer en él ni recibe comisión. Confirma siempre horarios, costos y disponibilidad directamente con la clínica.'),
-                            'title' => self::text('Título del llamado final', '¿Conoces una clínica que debería estar aquí?'),
-                            'text' => self::textarea('Texto del llamado final', 'Escríbenos con el nombre, la dirección y los servicios que ofrece. La revisamos y la agregamos.'),
+                            'title' => self::text('Título del llamado final', '¿Conoces un lugar que debería estar aquí?'),
+                            'text' => self::textarea('Texto del llamado final', 'Escríbenos con el nombre, la dirección y el teléfono. Lo revisamos y lo agregamos.'),
                         ],
                     ],
                 ],

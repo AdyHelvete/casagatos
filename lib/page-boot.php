@@ -64,6 +64,22 @@ if (!function_exists('tw_content')) {
     }
 }
 
+if (!function_exists('tw_paragraphs')) {
+    /**
+     * Texto largo del panel convertido en párrafos: una línea en blanco
+     * separa un párrafo del siguiente.
+     */
+    function tw_paragraphs(string $text, string $class = ''): void
+    {
+        $attr = $class !== '' ? ' class="' . tw_esc($class) . '"' : '';
+        foreach (preg_split('/\R\s*\R/', trim($text)) ?: [] as $paragraph) {
+            if (trim($paragraph) !== '') {
+                echo '<p' . $attr . '>' . tw_esc(trim($paragraph)) . '</p>';
+            }
+        }
+    }
+}
+
 if (!function_exists('tw_page_hero')) {
     /**
      * Encabezado estándar de las páginas interiores.

@@ -181,7 +181,12 @@ controlTabsStart($collectionType, [
                     <span class="control-muted"><code><?php echo h($publicUrl); ?></code></span>
                 </td>
                 <?php if ($groupOptions !== []): ?>
-                    <td><?php echo h($groupOptions[(string) ($item[$groupField] ?? '')] ?? '—'); ?></td>
+                    <td>
+                        <?php echo h($groupOptions[(string) ($item[$groupField] ?? '')] ?? '—'); ?>
+                        <?php if ($collectionType === 'clinics'): ?>
+                            <br><span class="control-muted"><?php echo h(ContentCollection::optionLabels('clinics', 'category')[(string) ($item['category'] ?? '')] ?? ''); ?></span>
+                        <?php endif; ?>
+                    </td>
                 <?php endif; ?>
                 <td><?php echo !empty($item['published']) ? 'Publicado' : 'Oculto'; ?><?php echo !empty($item['featured']) ? ' · Destacado' : ''; ?></td>
                 <td><?php echo (int) $item['order']; ?></td>
@@ -259,11 +264,14 @@ controlTabsStart($collectionType, [
             <label class="control-check"><input type="checkbox" name="urgent" value="1"<?php echo !empty($form['urgent']) ? ' checked' : ''; ?>><span>Marcar como urgente</span></label>
 
         <?php elseif ($collectionType === 'clinics'): ?>
-            <label><?php echo controlFieldLabel('Nombre de la clínica'); ?><input type="text" name="name" value="<?php echo h((string) $form['name']); ?>" required></label>
+            <label><?php echo controlFieldLabel('Nombre del lugar'); ?><input type="text" name="name" value="<?php echo h((string) $form['name']); ?>" required></label>
             <label><?php echo controlFieldLabel('Zona', 'Zumpango se muestra aparte, como opción para casos específicos.'); ?>
                 <select name="zone"><?php echo $optionTags(ContentCollection::optionLabels('clinics', 'zone'), (string) $form['zone']); ?></select>
             </label>
-            <label class="control-field--full"><?php echo controlFieldLabel('Qué tipo de servicio ofrece', 'Explicación breve, en una o dos frases.'); ?><textarea name="summary" rows="2"><?php echo h((string) $form['summary']); ?></textarea></label>
+            <label><?php echo controlFieldLabel('Tipo de lugar', 'En /directorio/ cada zona se divide en clínicas, tiendas de mascotas y estéticas.'); ?>
+                <select name="category"><?php echo $optionTags(ContentCollection::optionLabels('clinics', 'category'), (string) $form['category']); ?></select>
+            </label>
+            <label class="control-field--full"><?php echo controlFieldLabel('Nota breve', 'Opcional. Una frase sobre el lugar: "Farmacia veterinaria", "También atiende exóticos".'); ?><textarea name="summary" rows="2"><?php echo h((string) $form['summary']); ?></textarea></label>
             <label class="control-field--full"><?php echo controlFieldLabel('Servicios (uno por línea)', 'Se muestran como etiquetas: Consulta, Esterilización, Urgencias, Rayos X…'); ?><textarea name="services" rows="5" placeholder="Consulta general&#10;Esterilización&#10;Urgencias"><?php echo h(implode("\n", is_array($form['services']) ? $form['services'] : [])); ?></textarea></label>
             <label class="control-field--full"><?php echo controlFieldLabel('Caso específico', 'Opcional. Para qué caso se recomienda esta clínica (útil en las de Zumpango).'); ?><input type="text" name="specialty" value="<?php echo h((string) $form['specialty']); ?>" placeholder="Estudios de imagen y cirugía ortopédica"></label>
             <label class="control-field--full">Dirección<input type="text" name="address" value="<?php echo h((string) $form['address']); ?>"></label>

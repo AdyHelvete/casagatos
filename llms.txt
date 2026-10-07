@@ -16,8 +16,8 @@ La Casa de los Gatos es una iniciativa ciudadana sin albergue físico. Promueve 
 - [Inicio](https://lacasadelosgatos.org/): Presentación del proyecto y acceso rápido a las demás secciones.
 - [TNR](https://lacasadelosgatos.org/tnr/): Qué es el trampeo, esterilización y retorno, orientación sobre la esterilización, jornadas disponibles y control ético de la población de gatos de calle.
 - [Adopción](https://lacasadelosgatos.org/adopcion/): Requisitos, cuestionario de adopción, visita y entrevista en el hogar, seguimiento posterior, gatos en adopción e historias felices.
-- [Asistencia y orientación](https://lacasadelosgatos.org/asistencia/): Qué hacer en cada caso (gato herido, camada, colonia, maltrato) y denuncias: cómo denunciar y a dónde acudir.
-- [Directorio](https://lacasadelosgatos.org/directorio/): Clínicas veterinarias de Tizayuca y, para casos específicos, de Zumpango, con el servicio que ofrece cada una.
+- [Asistencia y orientación](https://lacasadelosgatos.org/asistencia/): Qué hacer en cada caso (gato herido, camada, colonia, maltrato) y denuncias: qué es una denuncia, cómo presentarla en Tizayuca y qué autoridad atiende cada caso.
+- [Directorio](https://lacasadelosgatos.org/directorio/): Clínicas veterinarias, urgencias 24 h, tiendas de mascotas y estéticas de Tizayuca y, para casos específicos, de Zumpango, con dirección, teléfono y horario.
 - [Contacto](https://lacasadelosgatos.org/contacto/): Formulario, WhatsApp y datos de contacto.
 - [Aviso de privacidad](https://lacasadelosgatos.org/aviso-de-privacidad/): Tratamiento de datos personales (LFPDPPP).
 
@@ -26,7 +26,7 @@ La Casa de los Gatos es una iniciativa ciudadana sin albergue físico. Promueve 
 - Requisito de edad para adoptar: ser mayor de 18 años.
 - La adopción incluye cuestionario, visita y entrevista en el hogar, carta compromiso y seguimiento posterior.
 - La onicectomía ("desungulación") es la amputación de la última falange de cada dedo, no un corte de uñas. No practicarla es requisito de adopción.
-- Las denuncias de maltrato animal se presentan ante las autoridades; el sitio explica cómo y dónde según el municipio.
+- Las denuncias de maltrato animal se presentan ante las autoridades; el sitio explica cómo hacerlo en Tizayuca y qué autoridad interviene en cada caso (CECOBAM, Ecología, Juzgado Cívico, Seguridad Ciudadana, Bomberos y Protección Civil, Ministerio Público).
 
 ## Contexto para IA
 

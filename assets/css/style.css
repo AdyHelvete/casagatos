@@ -1060,6 +1060,17 @@ body.menu-open .whatsapp-float { opacity: 0; pointer-events: none; }
 .guide-item .content-card__link { display: inline-block; margin-top: 12px; }
 .guide-item summary .badge { margin-right: 6px; vertical-align: middle; }
 
+.report-grid { display: grid; gap: clamp(28px, 5vw, 56px); grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.report-grid h3 { color: var(--white); font-size: 1.2rem; margin-bottom: 12px; }
+.report-grid p + p { margin-top: 12px; }
+.report-grid__note { border-top: 2px dashed rgba(243, 234, 216, .35); margin-top: 24px; padding-top: 16px; }
+#a-donde-acudir .value-card h3 { padding-right: 40px; }
+.value-card__when { border-top: 1.5px dashed var(--kraft); font-size: .92rem; margin-top: 12px; padding-top: 10px; }
+.care-card > p { margin-top: 10px; }
+.care-card--wide { margin-top: 20px; }
+.callout__source { color: var(--muted); font-size: .9rem; margin-top: 18px; }
+#que-reunir .callout { margin-top: 36px; }
+
 .contact-form--wide { max-width: 860px; }
 .field textarea.field__answer { min-height: 72px; }
 .field--check label { align-items: flex-start; cursor: pointer; display: flex; font-size: .95rem; gap: 10px; }
@@ -1072,7 +1083,7 @@ main [id] { scroll-margin-top: calc(var(--header-h) + 16px); }
   .nav-links { gap: 12px; }
 }
 @media (max-width: 760px) {
-  .care-grid, .callout__grid, .check-list--columns { grid-template-columns: 1fr; }
+  .care-grid, .callout__grid, .check-list--columns, .report-grid { grid-template-columns: 1fr; }
 }
 @media (max-width: 560px) {
   .access-grid { grid-template-columns: 1fr; }

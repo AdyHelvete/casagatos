@@ -122,7 +122,7 @@ controlHeader('Textos de las páginas', 'content');
                         <?php foreach ($field['fields'] as $subKey => $subLabel): ?>
                             <?php $subName = $name . '[' . $index . '][' . $subKey . ']'; ?>
                             <label><?php echo h($subLabel); ?>
-                                <?php if ($subKey === 'text'): ?>
+                                <?php if ($subKey === 'text' || $subKey === 'when'): ?>
                                     <textarea name="<?php echo h($subName); ?>" rows="3"><?php echo h((string) ($row[$subKey] ?? '')); ?></textarea>
                                 <?php else: ?>
                                     <input type="text" name="<?php echo h($subName); ?>" value="<?php echo h((string) ($row[$subKey] ?? '')); ?>">
